@@ -39,6 +39,9 @@ body {
 *::-webkit-scrollbar-thumb:hover {
   background-color: #e5e6eb;
 }
+* {
+  font-size: 12px !important;
+}
 img {
   user-select: none;
   display: inline;

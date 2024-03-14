@@ -8,7 +8,12 @@
           </div>
           <div class="msg-item">
             <div class="text-999" style="width: fit-content">{{ item.role }}</div>
-            <div class="msg">{{ item.content }}</div>
+            <div class="msg">
+              <div v-if="!isSystem(item.role)">
+                {{ item.content }}
+              </div>
+              <VMarkdownView mode="light" v-else :content="item.content"></VMarkdownView>
+            </div>
             <div class="actions flex gc-4">
               <template v-for="(v, k) in messageActions" :key="key">
                 <a-tooltip :title="v.tips">
@@ -29,9 +34,14 @@
 import logoPng from '@/assets/logo.png';
 import userPng from '@/assets/user.png';
 import { conversation } from '@/views/sidebar/sidebar';
+import { VMarkdownView } from 'vue3-markdown';
+import 'vue3-markdown/dist/style.css';
 import { messageActions } from './data';
-const msgRef = ref<HTMLElement | null>();
 
+const msgRef = ref<HTMLElement | null>();
+const isSystem = (role: string) => {
+  return role === 'assistant';
+};
 watch(
   conversation,
   () => {
