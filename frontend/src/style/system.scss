@@ -7,3 +7,10 @@
 	align-items: center;
 	border-radius: var(--radius);
 }
+.system-head {
+	display: flex;
+	line-height: 32px;
+	justify-content: space-between;
+	padding: 0 8px;
+	align-items: center;
+}

@@ -15,6 +15,7 @@
   "dependencies": {
     "@ant-design-vue/pro-layout": "^3.2.5",
     "@ant-design/icons-vue": "^7.0.1",
+    "@types/splitpanes": "^2.2.6",
     "@vueuse/core": "^10.7.2",
     "@vueuse/integrations": "^10.9.0",
     "ant-design-vue": "^4.1.1",
@@ -27,6 +28,7 @@
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.1",
     "sortablejs": "^1.15.2",
+    "splitpanes": "^3.1.5",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
   },

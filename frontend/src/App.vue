@@ -16,17 +16,19 @@
 
 <script setup lang="ts">
 import { ConfigProvider } from 'ant-design-vue';
+import type { ThemeConfig } from 'ant-design-vue/es/config-provider/context';
 import zhCN from 'ant-design-vue/es/locale/zh_CN';
 import { pageStore } from './store/page/utils';
 
 const locale = ref(zhCN);
 const store = pageStore();
 
-const theme = computed(() => {
+const theme = computed((): ThemeConfig => {
   return {
     token: {
       colorPrimary: store.$state.theme,
       borderRadius: 4,
+      fontSize: 12,
     },
   };
 });

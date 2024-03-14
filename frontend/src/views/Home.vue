@@ -1,14 +1,16 @@
 <template>
   <div class="gpt-home flex-s flex">
-    <div class="core flex">
+    <div class="core flex relative">
       <SidebarVue />
       <Content />
+      <SettingVue></SettingVue>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import Content from './content/Content.vue';
+import SettingVue from './content/setting/Setting.vue';
 import SidebarVue from './sidebar/Sidebar.vue';
 </script>
 <style scoped lang="scss">
