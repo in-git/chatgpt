@@ -1,6 +1,6 @@
 <template>
   <div class="content-head flex justify-between">
-    <div>会话标题</div>
+    <div>{{ conversation.title || 'empty' }}</div>
     <div class="flex align-center gc-4">
       <template v-for="(item, key) in options" :key="key">
         <a-tooltip :title="item.tips">
@@ -14,6 +14,7 @@
 </template>
 
 <script setup lang="ts">
+import { conversation } from '@/views/sidebar/sidebar';
 import { FullscreenOutlined, SettingOutlined } from '@ant-design/icons-vue';
 import { showSetting } from '../setting/setting';
 

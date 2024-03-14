@@ -23,7 +23,8 @@
 		width: 32px;
 		height: 32px;
 		background: #cac9c9;
-		border-radius: var(--radius);
+		border-radius: 50%;
+		overflow: hidden;
 	}
 	.time {
 		color: #999;

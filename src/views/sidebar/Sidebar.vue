@@ -22,7 +22,7 @@
       >
         <div class="flex align-center">
           <div class="image">
-            <img />
+            <img :src="logoPng" class="w-100 h-100" />
           </div>
           <div class="ml-8">
             <div class="session-name" v-if="!item.edit">{{ item.title }}</div>
@@ -62,6 +62,7 @@
 </template>
 
 <script setup lang="ts">
+import logoPng from '@/assets/logo.png';
 import useConversationStore from '@/store/conversation/conversation';
 import {
   DragOutlined,

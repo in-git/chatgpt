@@ -18,9 +18,11 @@
 
 <script setup lang="ts">
 import { sendMsg } from '@/api/modules/ai/chatgpt';
+import useConfigStore from '@/store/config/config';
 import { conversation } from '@/views/sidebar/sidebar';
 import { TranslationOutlined } from '@ant-design/icons-vue';
 
+const configStore = useConfigStore();
 const msg = ref<string>('');
 const loading = ref(false);
 
@@ -34,25 +36,30 @@ const send = async () => {
     return;
   }
   loading.value = true;
-  conversation.value.messageList.push({
-    role: 'user',
-    content: msg.value,
-  });
-  const { data } = await sendMsg({
-    messages: conversation.value.messageList,
-    model: 'gpt-3.5-turbo',
-    stream: false,
-    temperature: 1,
-    top_p: 0.7,
-  });
-  msg.value = '';
-  data.choices.forEach(e => {
-    conversation.value.messageList.push({
-      role: e.message.role,
-      content: e.message.content,
+
+  try {
+    const { data } = await sendMsg({
+      messages: conversation.value.messageList,
+      model: configStore.$state.model,
+      stream: false,
+      temperature: configStore.$state.temperature,
+      top_p: 0.7,
     });
-  });
-  loading.value = false;
+    conversation.value.messageList.push({
+      role: 'user',
+      content: msg.value,
+    });
+    msg.value = '';
+    data.choices.forEach(e => {
+      conversation.value.messageList.push({
+        role: e.message.role,
+        content: e.message.content,
+      });
+    });
+    loading.value = false;
+  } catch (error) {
+    loading.value = false;
+  }
 };
 </script>
 
