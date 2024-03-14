@@ -34,20 +34,22 @@ const send = async () => {
   if (event.ctrlKey) {
     msg.value += '\n';
     return;
+  } else {
+    event.preventDefault();
   }
   loading.value = true;
 
   try {
+    conversation.value.messageList.push({
+      role: 'user',
+      content: msg.value,
+    });
     const { data } = await sendMsg({
       messages: conversation.value.messageList,
       model: configStore.$state.model,
       stream: false,
       temperature: configStore.$state.temperature,
       top_p: 0.7,
-    });
-    conversation.value.messageList.push({
-      role: 'user',
-      content: msg.value,
     });
     msg.value = '';
     data.choices.forEach(e => {

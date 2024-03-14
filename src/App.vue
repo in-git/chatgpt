@@ -28,6 +28,7 @@ const theme = computed((): ThemeConfig => {
     token: {
       borderRadius: 4,
       fontSize: 12,
+      colorPrimary: store.$state.theme,
     },
   };
 });

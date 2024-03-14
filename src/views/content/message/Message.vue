@@ -9,10 +9,14 @@
           <div class="msg-item">
             <div class="text-999" style="width: fit-content">{{ item.role }}</div>
             <div class="msg">{{ item.content }}</div>
-            <div class="actions">
-              <div class="system-icon mt-2">
-                <CopyOutlined />
-              </div>
+            <div class="actions flex gc-4">
+              <template v-for="(v, k) in messageActions" :key="key">
+                <a-tooltip :title="v.tips">
+                  <div class="system-icon" @click="v.action(item, key)">
+                    <component :is="v.icon"></component>
+                  </div>
+                </a-tooltip>
+              </template>
             </div>
           </div>
         </div>
@@ -25,14 +29,12 @@
 import logoPng from '@/assets/logo.png';
 import userPng from '@/assets/user.png';
 import { conversation } from '@/views/sidebar/sidebar';
-import { CopyOutlined } from '@ant-design/icons-vue';
+import { messageActions } from './data';
 const msgRef = ref<HTMLElement | null>();
 
 watch(
   conversation,
   () => {
-    console.log('===');
-
     nextTick(() => {
       if (msgRef.value) {
         msgRef.value.scrollTo({

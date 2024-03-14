@@ -10,7 +10,7 @@ interface PageSettings {
 }
 const usePageStore = defineStore('page', {
   state: (): PageSettings => ({
-    theme: '',
+    theme: '#00a6fb',
     locale: '',
     size: 'small',
     direction: 'ltr',
