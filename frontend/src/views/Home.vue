@@ -3,7 +3,12 @@
     <div class="core flex relative">
       <SidebarVue />
       <Content />
-      <SettingVue></SettingVue>
+      <Transition
+        enter-active-class="animate__animated animate__slideInDown"
+        leave-active-class="animate__animated animate__slideOutDown"
+      >
+        <SettingVue v-if="showSetting"></SettingVue>
+      </Transition>
     </div>
   </div>
 </template>
@@ -11,6 +16,7 @@
 <script setup lang="ts">
 import Content from './content/Content.vue';
 import SettingVue from './content/setting/Setting.vue';
+import { showSetting } from './content/setting/setting';
 import SidebarVue from './sidebar/Sidebar.vue';
 </script>
 <style scoped lang="scss">

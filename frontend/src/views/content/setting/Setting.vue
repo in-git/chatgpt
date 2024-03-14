@@ -2,7 +2,7 @@
   <div class="settings" v-draggable>
     <div class="setting-head system-head px-8" data-drag>
       <div>系统设置</div>
-      <div class="system-icon">
+      <div class="system-icon" @click="showSetting = false">
         <CloseOutlined />
       </div>
     </div>
@@ -20,6 +20,7 @@
 <script setup lang="ts">
 import type { SegmentedOption } from 'ant-design-vue/es/segmented/src/segmented';
 import AdvanceVue from './advance/Advance.vue';
+import { showSetting } from './setting';
 import SystemVue from './system/System.vue';
 
 const data: SegmentedOption[] = [
@@ -42,9 +43,9 @@ const current = ref('advance');
 .settings {
   position: fixed;
   width: 600px;
-  height: 400px;
+  height: 450px;
   background: white;
-  top: calc(50% - 200px);
+  top: calc(50% - 220px);
   box-shadow: 0 0 46px #53535333;
   left: calc(50% - 300px);
   border: 1px solid #ddd;

@@ -28,11 +28,9 @@
 			text-align: right;
 		}
 	}
-	li {
-		&:hover {
-			.actions {
-				opacity: 1;
-			}
+	.msg-item:hover {
+		.actions {
+			opacity: 1;
 		}
 	}
 }

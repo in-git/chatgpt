@@ -1,18 +1,18 @@
 <template>
   <div class="gpt-sidebar">
     <div class="head px-8">
-      <div class="text-666">会话列表({{ store.$state.list.length }})</div>
+      <div class="text-666">会话列表({{ list.length }})</div>
       <a-tooltip title="创建对话">
         <div class="system-icon create" @click="create">
           <PlusOutlined />
         </div>
       </a-tooltip>
     </div>
-    <ul class="list" ref="listRef" v-show="store.$state.list.length > 0">
+    <ul class="list" ref="listRef" v-show="list.length > 0">
       <li
         class="flex align-center p-8 justify-between"
-        v-for="(item, key) in store.$state.list"
-        :key="key"
+        v-for="item in list"
+        :key="item.id"
         :class="{ active: conversation.id === item.id }"
         @click="selectConversation(item)"
         ref="itemRef"
@@ -62,7 +62,7 @@
 import useConversationStore from '@/store/conversation/conversation';
 import { DragOutlined, EllipsisOutlined, PlusOutlined } from '@ant-design/icons-vue';
 import { useDateFormat, useNow } from '@vueuse/core';
-import { useSortable } from '@vueuse/integrations/useSortable';
+import { moveArrayElement, useSortable } from '@vueuse/integrations/useSortable';
 import type { MenuInfo } from 'ant-design-vue/es/menu/src/interface';
 import { nanoid } from 'nanoid';
 import { conversation, menus } from './sidebar';
@@ -101,8 +101,19 @@ nextTick(() => {
   useSortable(listRef, store.$state.list, {
     animation: 200,
     handle: '.handle',
+    onUpdate: (e: { oldIndex: number; newIndex: number }) => {
+      // do something
+      moveArrayElement(list.value, e.oldIndex, e.newIndex);
+      // nextTick required here as moveArrayElement is executed in a microtas
+      // so we need to wait until the next tick until that is finished.
+      nextTick(() => {
+        /* do something */
+      });
+    },
   });
 });
+
+const list = computed(() => store.$state.list);
 
 watch(conversation, () => {
   const index = store.$state.list.findIndex(e => {
