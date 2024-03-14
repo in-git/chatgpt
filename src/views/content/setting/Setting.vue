@@ -36,7 +36,7 @@ const data: SegmentedOption[] = [
   },
 ];
 
-const current = ref('advance');
+const current = ref('system');
 </script>
 
 <style lang="scss" scoped>
