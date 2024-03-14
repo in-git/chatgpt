@@ -18,10 +18,10 @@
 import { ConfigProvider } from 'ant-design-vue';
 import type { ThemeConfig } from 'ant-design-vue/es/config-provider/context';
 import zhCN from 'ant-design-vue/es/locale/zh_CN';
-import { pageStore } from './store/page/utils';
+import usePageStore from './store/page';
 
 const locale = ref(zhCN);
-const store = pageStore();
+const store = usePageStore();
 
 const theme = computed((): ThemeConfig => {
   return {

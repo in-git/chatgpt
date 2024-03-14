@@ -6,7 +6,13 @@
       </div>
     </div>
     <div class="textarea flex-1 h-100">
-      <textarea @keydown.enter="send" v-model="msg" placeholder="AI 一下吧" v-focus></textarea>
+      <textarea
+        :disabled="loading"
+        @keydown.enter="send"
+        v-model="msg"
+        placeholder="AI 一下吧"
+        v-focus
+      ></textarea>
     </div>
     <div class="my-4 text-right mr-12">
       <a-button type="primary" :disabled="msg.length === 0" @click="send" :loading="loading">
@@ -84,5 +90,8 @@ textarea {
   padding: 0 12px;
   margin: 0;
   background: transparent;
+}
+textarea:disabled {
+  color: #999;
 }
 </style>
