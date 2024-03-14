@@ -1,7 +1,10 @@
 <template>
   <div class="gpt-sidebar">
     <div class="head px-8">
-      <div class="text-666">会话列表({{ list.length }})</div>
+      <div class="text-666">
+        <UnorderedListOutlined />
+        会话列表({{ list.length }})
+      </div>
       <a-tooltip title="创建对话">
         <div class="system-icon create" @click="create">
           <PlusOutlined />
@@ -60,7 +63,12 @@
 
 <script setup lang="ts">
 import useConversationStore from '@/store/conversation/conversation';
-import { DragOutlined, EllipsisOutlined, PlusOutlined } from '@ant-design/icons-vue';
+import {
+  DragOutlined,
+  EllipsisOutlined,
+  PlusOutlined,
+  UnorderedListOutlined,
+} from '@ant-design/icons-vue';
 import { useDateFormat, useNow } from '@vueuse/core';
 import { moveArrayElement, useSortable } from '@vueuse/integrations/useSortable';
 import type { MenuInfo } from 'ant-design-vue/es/menu/src/interface';
@@ -90,6 +98,7 @@ const create = () => {
     time: formatted.value,
     id,
     edit: false,
+    messageList: [],
   };
   store.$state.list.push({
     ...newItem,

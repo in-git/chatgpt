@@ -6,7 +6,6 @@ import axios from 'axios';
 
 if (import.meta.env.VITE_BASEURL) {
   // axios.defaults.baseURL = import.meta.env.VITE_BASEURL;
-  axios.defaults.baseURL = `https://openkey.cloud/v1/chat/completions`;
 }
 
 export interface HttpResponse<T = unknown> {

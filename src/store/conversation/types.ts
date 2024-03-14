@@ -4,4 +4,5 @@ interface Conversation {
   id: string;
   /* Allows editing session names */
   edit: boolean;
+  messageList: GptMessage[];
 }

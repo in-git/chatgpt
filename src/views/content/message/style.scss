@@ -1,31 +1,40 @@
+.gpt-message {
+	overflow-y: auto;
+	height: calc(100%);
+}
 .msg-list {
 	.avatar {
 		$wh: 32px;
 		width: $wh;
 		height: $wh;
 		min-width: $wh;
-		background: #aaa;
-		border-radius: var(--radius);
+		border-radius: 50%;
+		overflow: hidden;
+		border: 2px solid white;
 	}
 	.msg {
 		background: white;
 		padding: 6px 8px;
-		max-width: 80%;
 		margin-top: 4px;
 		white-space: pre-wrap;
-		min-width: 90px;
+		border-radius: var(--radius);
 		color: #333;
 		width: fit-content;
 		height: fit-content;
 	}
 	.user {
 		flex-direction: row-reverse;
+
 		.msg-item {
 			display: flex;
 			flex-direction: column;
 			align-items: flex-end;
 			justify-content: right;
 			text-align: right;
+		}
+		.msg {
+			background: var(--primary);
+			color: white;
 		}
 	}
 	.msg-item:hover {
@@ -34,12 +43,19 @@
 		}
 	}
 }
+.msg-item {
+	max-width: 80%;
+	position: relative;
+}
 .actions {
 	opacity: 0;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: calc(100%);
 }
 .system-icon {
 	&:hover {
 		background: #ddd;
 	}
-	margin-top: 4px;
 }

@@ -6,6 +6,7 @@ export const conversation = ref<Conversation>({
   time: '',
   id: '',
   edit: false,
+  messageList: [],
 });
 export const menus = [
   {
