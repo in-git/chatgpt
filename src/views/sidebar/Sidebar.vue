@@ -14,15 +14,15 @@
     <ul class="list" ref="listRef" v-show="list.length > 0">
       <li
         class="flex align-center p-8 justify-between"
-        v-for="item in list"
+        v-for="(item, key) in list"
         :key="item.id"
         :class="{ active: conversation.id === item.id }"
         @click="selectConversation(item)"
         ref="itemRef"
       >
         <div class="flex align-center">
-          <div class="image">
-            <img :src="logoPng" class="w-100 h-100" />
+          <div class="index flex flex-s">
+            {{ key + 1 }}
           </div>
           <div class="ml-8">
             <div class="session-name" v-if="!item.edit">{{ item.title }}</div>
@@ -62,7 +62,6 @@
 </template>
 
 <script setup lang="ts">
-import logoPng from '@/assets/logo.png';
 import useConversationStore from '@/store/conversation/conversation';
 import {
   DragOutlined,

@@ -9,6 +9,7 @@ export const conversation = ref<Conversation>({
   edit: false,
   messageList: [],
 });
+
 export const menus = [
   {
     key: 'edit',

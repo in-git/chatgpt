@@ -19,12 +19,13 @@
 			}
 		}
 	}
-	.image {
+	.index {
 		width: 32px;
 		height: 32px;
-		background: #cac9c9;
+		background: #ddd9dd;
 		border-radius: 50%;
 		overflow: hidden;
+		color: #333;
 	}
 	.time {
 		color: #999;
@@ -44,6 +45,9 @@
 		.handle,
 		.actions {
 			opacity: 1;
+		}
+		.index {
+			border: 1px solid white;
 		}
 	}
 	ul.list {
