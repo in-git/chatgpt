@@ -1,5 +1,5 @@
 <template>
-  <div class="gpt-head"></div>
+  <div class="gpt-message"></div>
 </template>
 
 <script setup lang="ts"></script>

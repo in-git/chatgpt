@@ -1,7 +1,7 @@
 <template>
   <div class="gpt-sidebar">
     <div class="head px-8">
-      <div class="text-666">会话标题</div>
+      <div class="text-666">会话列表({{ store.$state.list.length }})</div>
       <a-tooltip title="创建对话">
         <div class="system-icon create" @click="create">
           <PlusOutlined />
@@ -15,6 +15,7 @@
         :key="key"
         :class="{ active: conversation.id === item.id }"
         @click="selectConversation(item)"
+        ref="itemRef"
       >
         <div class="flex align-center">
           <div class="image">
@@ -69,6 +70,7 @@ import { conversation, menus } from './sidebar';
 const store = useConversationStore();
 
 const listRef = ref();
+const itemRef = ref<HTMLElement[] | null>();
 
 const selectConversation = (item: Conversation) => {
   conversation.value = item;
@@ -99,6 +101,19 @@ nextTick(() => {
   useSortable(listRef, store.$state.list, {
     animation: 200,
     handle: '.handle',
+  });
+});
+
+watch(conversation, () => {
+  const index = store.$state.list.findIndex(e => {
+    return e.id === conversation.value.id;
+  });
+  nextTick(() => {
+    if (itemRef.value && index > -1) {
+      itemRef.value[index].scrollIntoView({
+        block: 'end',
+      });
+    }
   });
 });
 </script>

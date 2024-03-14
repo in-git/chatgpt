@@ -1,5 +1,5 @@
 import useConversationStore from '@/store/conversation/conversation';
-import { DeleteOutlined, EditOutlined } from '@ant-design/icons-vue';
+import { ClearOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons-vue';
 
 export const conversation = ref<Conversation>({
   title: '',
@@ -28,5 +28,12 @@ export const menus = [
         return e.id !== conversation.value.id;
       });
     },
+  },
+  {
+    key: 'clear',
+    icon: () => h(ClearOutlined),
+    label: '清空',
+    title: '清空',
+    action() {},
   },
 ];
