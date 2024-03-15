@@ -10,7 +10,7 @@
     <div class="p-8">
       <a-segmented v-model:value="current" :options="data"></a-segmented>
       <div class="mt-8">
-        <SystemVue v-if="current === 'system'" />
+        <GptVue v-if="current === 'gpt'" />
         <AdvanceVue v-else-if="current === 'advance'" />
       </div>
     </div>
@@ -20,14 +20,14 @@
 <script setup lang="ts">
 import type { SegmentedOption } from 'ant-design-vue/es/segmented/src/segmented';
 import AdvanceVue from './advance/Advance.vue';
+import GptVue from './gpt/Gpt.vue';
 import { showSetting } from './setting';
-import SystemVue from './system/System.vue';
 
 const data: SegmentedOption[] = [
   {
-    title: '系统设置',
-    label: '系统设置',
-    value: 'system',
+    title: 'Gpt设置',
+    label: 'Gpt设置',
+    value: 'gpt',
   },
   {
     label: '高级设置',
@@ -36,7 +36,7 @@ const data: SegmentedOption[] = [
   },
 ];
 
-const current = ref('system');
+const current = ref<'gpt' | 'advance'>('gpt');
 </script>
 
 <style lang="scss" scoped>

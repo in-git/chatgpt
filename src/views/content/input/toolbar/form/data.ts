@@ -37,7 +37,7 @@ export const classification = [
 
 const defaultWordObj: DefaultWord = {
   name: '',
-  role: 'assistant',
+  role: 'user',
   content: '',
   type: '',
   id: '',

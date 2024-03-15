@@ -6,12 +6,7 @@
       :label-col="{ span: 6 }"
       layout="vertical"
     >
-      <a-card title="系统设置">
-        <template #extra>
-          <div>
-            <a-button danger>重置</a-button>
-          </div>
-        </template>
+      <a-card title="GPT设置">
         <a-form-item label="Key">
           <a-input v-model:value="configStore.$state.token"></a-input>
           <div class="text-999">

@@ -55,8 +55,12 @@
               v-if="configStore.$state.memory"
             ></a-statistic>
             <div v-else>
-              <InfoCircleFilled />
+              <InfoCircleOutlined />
               不携带历史记录
+              <div style="color: orange">
+                <InfoCircleFilled />
+                这会导致预设失效
+              </div>
             </div>
           </a-card>
         </template>
@@ -70,7 +74,7 @@
 import useConfigStore from '@/store/config/config';
 import useConversationStore, { type DefaultWord } from '@/store/conversation/conversation';
 import { conversation } from '@/views/sidebar/sidebar';
-import { PlusOutlined } from '@ant-design/icons-vue';
+import { InfoCircleOutlined, PlusOutlined } from '@ant-design/icons-vue';
 import DefaultWordVue from './DefaultWord.vue';
 import { classification } from './form/data';
 
