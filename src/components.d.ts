@@ -50,6 +50,7 @@ declare module 'vue' {
     ATag: typeof import('ant-design-vue/es')['Tag']
     ATextarea: typeof import('ant-design-vue/es')['Textarea']
     ATooltip: typeof import('ant-design-vue/es')['Tooltip']
+    ATypographyParagraph: typeof import('ant-design-vue/es')['TypographyParagraph']
     CloseOutlined: typeof import('@ant-design/icons-vue')['CloseOutlined']
     DeleteOutlined: typeof import('@ant-design/icons-vue')['DeleteOutlined']
     Draggable: typeof import('./components/draggable/Draggable.vue')['default']

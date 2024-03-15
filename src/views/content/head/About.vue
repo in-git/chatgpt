@@ -12,8 +12,23 @@
           </div>
         </div>
       </a-descriptions-item>
+      <a-descriptions-item label="源码">
+        <a href="https://gitee.com/in-git/chat-gpt.git" target="_blank" class="text-center">
+          <img src="https://gitee.com/static/images/logo-en.svg" width="24" alt="" />
+        </a>
+      </a-descriptions-item>
 
-      <a-descriptions-item label="版本">初代</a-descriptions-item>
+      <a-descriptions-item label="支持移动端">不支持移动端</a-descriptions-item>
+    </a-descriptions>
+
+    <a-descriptions title="反馈" :column="1">
+      <a-descriptions-item label="作者">
+        <span class="text-primary">吴文龙</span>
+      </a-descriptions-item>
+
+      <a-descriptions-item label="BUG/功能">
+        <a-typography-paragraph class="my-0" copyable>444891953@qq.com</a-typography-paragraph>
+      </a-descriptions-item>
     </a-descriptions>
   </div>
 </template>
@@ -29,5 +44,8 @@
     width: 100%;
     height: 100%;
   }
+}
+.text-primary {
+  color: var(--primary);
 }
 </style>
