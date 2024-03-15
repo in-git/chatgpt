@@ -14,10 +14,12 @@
         </template>
         <a-form-item label="Key">
           <a-input v-model:value="configStore.$state.token"></a-input>
-          <div class="text-orange">
+          <div class="text-999">
             <InfoCircleFilled />
             相当于一个账号,
-            <a-button type="link">免费体验</a-button>
+            <a-button type="link" href="https://faucet.openkey.cloud/" target="_blank">
+              免费体验
+            </a-button>
             每天有一定额度
           </div>
         </a-form-item>

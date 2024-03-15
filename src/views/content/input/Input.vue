@@ -1,10 +1,6 @@
 <template>
   <div class="content-input flex flex-col h-100">
-    <div class="toolbar flex align-center justify-between px-8">
-      <div class="system-icon">
-        <TranslationOutlined />
-      </div>
-    </div>
+    <Toolbar />
     <div class="textarea flex-1 h-100">
       <textarea
         :disabled="loading"
@@ -12,6 +8,7 @@
         v-model="msg"
         placeholder="AI 一下吧"
         v-focus
+        ref="textareaRef"
       ></textarea>
     </div>
     <div class="my-4 text-right mr-12">
@@ -26,11 +23,12 @@
 import { sendMsg } from '@/api/modules/ai/chatgpt';
 import useConfigStore from '@/store/config/config';
 import { conversation } from '@/views/sidebar/sidebar';
-import { TranslationOutlined } from '@ant-design/icons-vue';
+import Toolbar from './toolbar/Toolbar.vue';
 
 const configStore = useConfigStore();
 const msg = ref<string>('');
 const loading = ref(false);
+const textareaRef = ref<HTMLTextAreaElement | null>();
 
 const send = async () => {
   const event = window.event as MouseEvent;
@@ -46,12 +44,23 @@ const send = async () => {
   loading.value = true;
 
   try {
-    conversation.value.messageList.push({
+    const newMsg = {
       role: 'user',
       content: msg.value,
+    };
+    conversation.value.messageList.push({
+      ...newMsg,
     });
+    let tempMsg = undefined;
+    if (configStore.$state.memory) {
+      tempMsg = conversation.value.messageList;
+    } else {
+      tempMsg = [newMsg];
+    }
+    console.log(tempMsg);
+
     const { data } = await sendMsg({
-      messages: conversation.value.messageList,
+      messages: tempMsg,
       model: configStore.$state.model,
       stream: false,
       temperature: configStore.$state.temperature,
@@ -63,6 +72,9 @@ const send = async () => {
         role: e.message.role,
         content: e.message.content,
       });
+    });
+    nextTick(() => {
+      textareaRef.value?.focus();
     });
     loading.value = false;
   } catch (error) {

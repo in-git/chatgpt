@@ -1,4 +1,6 @@
 import { defineStore } from 'pinia';
+import type { Conversation } from './types';
+
 interface ConversationStore {
   list: Conversation[];
 }

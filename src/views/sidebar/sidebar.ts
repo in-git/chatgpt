@@ -1,4 +1,5 @@
 import useConversationStore from '@/store/conversation/conversation';
+import type { Conversation } from '@/store/conversation/types';
 import { ClearOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons-vue';
 import { Modal } from 'ant-design-vue';
 

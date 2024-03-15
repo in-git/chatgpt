@@ -1,4 +1,4 @@
-interface GptResult {
+export interface GptResult {
   id: string;
   object: string;
   created: number;
@@ -11,7 +11,13 @@ interface GptResult {
   };
   system_fingerprint: string;
 }
-interface GptParams {
+export interface GptMessage {
+  role: string;
+  content: string;
+  time?: string;
+}
+
+export interface GptParams {
   messages: GptMessage[];
   model: 'gpt-3.5-turbo';
   stream: boolean;
@@ -19,15 +25,9 @@ interface GptParams {
   top_p: number;
 }
 
-interface Choice {
+export interface Choice {
   index: number;
   message: GptMessage;
   logprobs?: any;
   finish_reason: string;
-}
-
-interface GptMessage {
-  role: string;
-  content: string;
-  time?: string;
 }

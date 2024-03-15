@@ -4,24 +4,28 @@
       <li v-for="(item, key) in conversation.messageList" :key="key">
         <div class="message-item flex gc-4" :class="[item.role]">
           <div class="avatar flex flex-s">
-            <img :src="item.role === 'assistant' ? logoPng : userPng" class="w-100 h-100" />
+            <img :src="isSystem(item.role) ? logoPng : userPng" class="w-100 h-100" />
           </div>
-          <div class="msg-item">
-            <div class="text-999" style="width: fit-content">{{ item.role }}</div>
+          <div class="msg-item" :class="[expand ? 'expand-text' : '']">
+            <div class="flex gc-4 align-center msg-head" style="width: fit-content">
+              <div class="text-999">
+                {{ item.role }}
+              </div>
+              <div class="actions flex gc-4 text-999">
+                <template v-for="(v, k) in messageActions" :key="k">
+                  <a-tooltip :title="v.tips">
+                    <div class="system-icon" @click="v.action(item, key)">
+                      <component :is="v.icon"></component>
+                    </div>
+                  </a-tooltip>
+                </template>
+              </div>
+            </div>
             <div class="msg">
               <div v-if="!isSystem(item.role)">
                 {{ item.content }}
               </div>
               <VMarkdownView mode="light" v-else :content="item.content"></VMarkdownView>
-            </div>
-            <div class="actions flex gc-4">
-              <template v-for="(v, k) in messageActions" :key="key">
-                <a-tooltip :title="v.tips">
-                  <div class="system-icon" @click="v.action(item, key)">
-                    <component :is="v.icon"></component>
-                  </div>
-                </a-tooltip>
-              </template>
             </div>
           </div>
         </div>
@@ -38,6 +42,7 @@ import { VMarkdownView } from 'vue3-markdown';
 import 'vue3-markdown/dist/style.css';
 import { messageActions } from './data';
 
+const expand = ref(false);
 const msgRef = ref<HTMLElement | null>();
 const isSystem = (role: string) => {
   return role === 'assistant';
