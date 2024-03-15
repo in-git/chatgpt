@@ -79,7 +79,7 @@ const dragstop = () => {
 $hh: 42px;
 .drv {
   border: 1px solid #eee;
-  box-shadow: 0 0 25px #a0a0a065;
+  box-shadow: var(--window-shadow);
   border-radius: 4px;
   overflow: hidden;
 }

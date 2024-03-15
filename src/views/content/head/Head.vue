@@ -1,6 +1,14 @@
 <template>
-  <div class="content-head flex justify-between">
-    <div>{{ conversation.title || 'empty' }}</div>
+  <div class="content-head flex justify-between align-center">
+    <div class="flex gc-4">
+      <a-breadcrumb>
+        <a-breadcrumb-item>{{ configStore.$state.model }}</a-breadcrumb-item>
+        <a-breadcrumb-item>
+          {{ conversation.title || 'empty' }}
+        </a-breadcrumb-item>
+      </a-breadcrumb>
+    </div>
+
     <div class="flex align-center gc-4">
       <template v-for="(item, key) in options" :key="key">
         <a-tooltip :title="item.tips">
@@ -29,11 +37,13 @@
 </template>
 
 <script setup lang="ts">
+import useConfigStore from '@/store/config/config';
 import usePageStore from '@/store/page';
 import { conversation } from '@/views/sidebar/sidebar';
 import { FullscreenExitOutlined, FullscreenOutlined, SettingOutlined } from '@ant-design/icons-vue';
 import { showSetting } from '../setting/setting';
 
+const configStore = useConfigStore();
 const pageStore = usePageStore();
 
 const options = [
@@ -51,6 +61,7 @@ const options = [
 .content-head {
   line-height: 32px;
   padding: 0 8px;
+  height: 32px;
   border-bottom: 1px solid #ddd;
   .system-icon {
     &:hover {

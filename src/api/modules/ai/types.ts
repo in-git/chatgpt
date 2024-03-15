@@ -12,7 +12,7 @@ export interface GptResult {
   system_fingerprint: string;
 }
 export interface GptMessage {
-  role: string;
+  role: 'system' | 'user' | 'assistant';
   content: string;
   time?: string;
 }

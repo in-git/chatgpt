@@ -21,6 +21,7 @@
 
 <script setup lang="ts">
 import { sendMsg } from '@/api/modules/ai/chatgpt';
+import type { GptMessage } from '@/api/modules/ai/types';
 import useConfigStore from '@/store/config/config';
 import { conversation } from '@/views/sidebar/sidebar';
 import Toolbar from './toolbar/Toolbar.vue';
@@ -45,7 +46,7 @@ const send = async () => {
   loading.value = true;
 
   try {
-    const newMsg = {
+    const newMsg: GptMessage = {
       role: 'user',
       content: msg.value,
     };
@@ -85,15 +86,6 @@ const send = async () => {
 </script>
 
 <style lang="scss" scoped>
-.toolbar {
-  line-height: 32px;
-  height: 32px;
-  .system-icon {
-    &:hover {
-      background: #fff;
-    }
-  }
-}
 textarea {
   border: none;
   outline: none;

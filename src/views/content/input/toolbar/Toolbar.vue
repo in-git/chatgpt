@@ -1,8 +1,25 @@
 <template>
   <div class="toolbar flex align-center justify-between px-8">
-    <div class="system-icon">
-      <TranslationOutlined />
+    <div class="flex gc-2">
+      <a-popover title="多国语言助手" trigger="click">
+        <div class="system-icon">
+          <TranslationOutlined />
+        </div>
+        <template #content>
+          <a-card>
+            <a-tag>中译英</a-tag>
+          </a-card>
+        </template>
+      </a-popover>
+      <div>
+        <a-tooltip title="新增预设">
+          <div class="system-icon" @click="visible = true">
+            <PlusOutlined />
+          </div>
+        </a-tooltip>
+      </div>
     </div>
+    <!--  -->
     <div class="flex gc-4 align-center">
       <a-popconfirm title="清空当前聊天记录" @confirm="clear" placement="bottom">
         <a-tooltip title="清空当前会话的聊天记录">
@@ -33,13 +50,17 @@
         </template>
       </a-popover>
     </div>
+    <DefaultWord v-model:visible="visible" />
   </div>
 </template>
 
 <script setup lang="ts">
 import useConfigStore from '@/store/config/config';
 import { conversation } from '@/views/sidebar/sidebar';
-import { DeleteOutlined, InfoCircleFilled, TranslationOutlined } from '@ant-design/icons-vue';
+import { PlusOutlined } from '@ant-design/icons-vue';
+import DefaultWord from './DefaultWord.vue';
+
+const visible = ref(false);
 const configStore = useConfigStore();
 
 const count = ref(0);
@@ -60,4 +81,14 @@ watch(
 );
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.toolbar {
+  line-height: 32px;
+  height: 32px;
+  .system-icon {
+    &:hover {
+      background: #fff;
+    }
+  }
+}
+</style>

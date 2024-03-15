@@ -7,6 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AAutoComplete: typeof import('ant-design-vue/es')['AutoComplete']
     AAvatar: typeof import('ant-design-vue/es')['Avatar']
     ABreadcrumb: typeof import('ant-design-vue/es')['Breadcrumb']
     ABreadcrumbItem: typeof import('ant-design-vue/es')['BreadcrumbItem']
@@ -42,12 +43,16 @@ declare module 'vue' {
     ASwitch: typeof import('ant-design-vue/es')['Switch']
     ATabPane: typeof import('ant-design-vue/es')['TabPane']
     ATabs: typeof import('ant-design-vue/es')['Tabs']
+    ATag: typeof import('ant-design-vue/es')['Tag']
     ATextarea: typeof import('ant-design-vue/es')['Textarea']
     ATooltip: typeof import('ant-design-vue/es')['Tooltip']
     CloseOutlined: typeof import('@ant-design/icons-vue')['CloseOutlined']
+    DeleteOutlined: typeof import('@ant-design/icons-vue')['DeleteOutlined']
     Draggable: typeof import('./components/draggable/Draggable.vue')['default']
     Icon: typeof import('./components/icon/Icon.vue')['default']
+    InfoCircleFilled: typeof import('@ant-design/icons-vue')['InfoCircleFilled']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TranslationOutlined: typeof import('@ant-design/icons-vue')['TranslationOutlined']
   }
 }

@@ -46,7 +46,7 @@ const current = ref('system');
   height: 450px;
   background: white;
   top: calc(50% - 220px);
-  box-shadow: 0 0 46px #53535333;
+  box-shadow: var(--window-shadow);
   left: calc(50% - 300px);
   border: 1px solid #ddd;
   border-radius: var(--radius);
