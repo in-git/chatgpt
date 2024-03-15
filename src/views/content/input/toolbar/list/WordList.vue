@@ -12,12 +12,11 @@
         </a-radio-button>
       </a-radio-group>
       <div class="flex gc-4">
-        <a-tooltip title="添加到快捷方式">
-          <a-button :disabled="!currentWord" @click="createShortcut">
-            <PlusOutlined />
+        <a-tooltip title="编辑">
+          <a-button type="primary" :disabled="!currentWord" @click="edit">
+            <EditOutlined />
           </a-button>
         </a-tooltip>
-        <a-button type="primary" :disabled="!currentWord">使用</a-button>
       </div>
     </div>
 
@@ -40,10 +39,10 @@
 
 <script setup lang="ts">
 import useConversationStore, { type DefaultWord } from '@/store/conversation/conversation';
-import { PlusOutlined } from '@ant-design/icons-vue';
+import { EditOutlined } from '@ant-design/icons-vue';
 import { useSortable } from '@vueuse/integrations/useSortable';
-import { message } from 'ant-design-vue';
-import { classification } from '../form/data';
+import { tabs } from '../data';
+import { classification, defaultWordForm } from '../form/data';
 
 const listRef = ref();
 const conversationStore = useConversationStore();
@@ -64,13 +63,11 @@ const list = computed(() => {
   });
 });
 
-const createShortcut = () => {
+const edit = () => {
   if (currentWord.value) {
-    conversationStore.$state.shortcut.push({
-      ...currentWord.value,
-    });
+    defaultWordForm.value = currentWord.value;
+    tabs.value = 'form';
   }
-  message.success('成功添加');
 };
 </script>
 

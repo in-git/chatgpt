@@ -12,11 +12,11 @@
         </div>
       </div>
       <div class="px-8">
-        <a-tabs>
+        <a-tabs v-model:active-key="tabs" @change="resetDefaultWordForm">
           <a-tab-pane key="list" tab="预设列表">
             <WordList />
           </a-tab-pane>
-          <a-tab-pane key="form" tab="新建">
+          <a-tab-pane key="form" tab="新建/编辑">
             <WordForm />
           </a-tab-pane>
         </a-tabs>
@@ -26,7 +26,9 @@
 </template>
 
 <script setup lang="ts">
+import { tabs } from './data';
 import WordForm from './form/WordForm.vue';
+import { resetDefaultWordForm } from './form/data';
 import WordList from './list/WordList.vue';
 
 const emit = defineEmits(['update:visible']);

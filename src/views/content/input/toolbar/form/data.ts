@@ -1,3 +1,4 @@
+import type { DefaultWord } from '@/store/conversation/conversation';
 import {
   AppleOutlined,
   CodeOutlined,
@@ -33,3 +34,20 @@ export const classification = [
     icon: markRaw(HighlightOutlined),
   },
 ];
+
+const defaultWordObj: DefaultWord = {
+  name: '',
+  role: 'assistant',
+  content: '',
+  type: '',
+  id: '',
+  desc: '',
+};
+export const defaultWordForm = ref<DefaultWord>({
+  ...defaultWordObj,
+});
+export const resetDefaultWordForm = () => {
+  defaultWordForm.value = {
+    ...defaultWordObj,
+  };
+};

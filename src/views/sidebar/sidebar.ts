@@ -2,13 +2,15 @@ import useConversationStore from '@/store/conversation/conversation';
 import type { Conversation } from '@/store/conversation/types';
 import { ClearOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons-vue';
 import { Modal } from 'ant-design-vue';
-
-export const conversation = ref<Conversation>({
+const conversationObj: Conversation = {
   title: '',
   time: '',
   id: '',
   edit: false,
   messageList: [],
+};
+export const conversation = ref<Conversation>({
+  ...conversationObj,
 });
 
 export const menus = [
@@ -52,6 +54,9 @@ export const menus = [
           store.$state.list = store.$state.list.filter(e => {
             return e.id !== conversation.value.id;
           });
+          conversation.value = {
+            ...conversationObj,
+          };
         },
         centered: true,
       });

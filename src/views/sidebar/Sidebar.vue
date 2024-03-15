@@ -113,13 +113,7 @@ nextTick(() => {
     animation: 200,
     handle: '.handle',
     onUpdate: (e: { oldIndex: number; newIndex: number }) => {
-      // do something
       moveArrayElement(list.value, e.oldIndex, e.newIndex);
-      // nextTick required here as moveArrayElement is executed in a microtas
-      // so we need to wait until the next tick until that is finished.
-      nextTick(() => {
-        /* do something */
-      });
     },
   });
 });
