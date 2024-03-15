@@ -8,7 +8,7 @@
     >
       <a-card title="GPT设置">
         <a-form-item label="Key">
-          <a-input v-model:value="configStore.$state.token"></a-input>
+          <a-input v-model:value="configStore.$state.token" allow-clear></a-input>
           <div class="text-999">
             <InfoCircleFilled />
             相当于一个账号,

@@ -57,8 +57,6 @@ const toTop = () => {
   });
 };
 const close = () => {
-  console.log('==1');
-
   emit('close');
 };
 const x = ref(window.innerWidth / 2 - props.w / 2);

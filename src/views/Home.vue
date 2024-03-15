@@ -33,7 +33,6 @@ const screenOptions = [
   },
 ];
 const style = computed((): CSSProperties => {
-  console.log();
   const wh = screenOptions[pageStore.$state.screenType];
   return {
     width: `${wh.width}px`,

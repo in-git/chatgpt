@@ -61,7 +61,6 @@ const send = async () => {
     } else {
       tempMsg = [newMsg];
     }
-    console.log(tempMsg);
 
     const { data } = await sendMsg({
       messages: tempMsg,

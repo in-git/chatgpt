@@ -82,7 +82,6 @@ const store = useConversationStore();
 const listRef = ref();
 const itemRef = ref<HTMLElement[] | null>();
 const setTitle = (item: Conversation) => {
-  console.log(item.title);
   if (!item.title) {
     item.title = `新建会话(${store.$state.list.length})`;
   }

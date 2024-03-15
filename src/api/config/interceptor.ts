@@ -17,7 +17,6 @@ export interface HttpResponse<T = unknown> {
 
 axios.interceptors.request.use(
   (config: AxiosRequestConfig | any) => {
-    console.log('==');
     const configStore = useConfigStore();
     if (config.headers) {
       config.headers.Authorization = `Bearer ${configStore.$state.token}`;
