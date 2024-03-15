@@ -2,7 +2,69 @@
   "hash": "79f68a9a",
   "configHash": "421cdd8d",
   "lockfileHash": "e3b0c442",
-  "browserHash": "23ccbbdc",
-  "optimized": {},
-  "chunks": {}
+  "browserHash": "cc8a956e",
+  "optimized": {
+    "ant-design-vue": {
+      "src": "../../node_modules/.store/ant-design-vue@4.1.2/node_modules/ant-design-vue/es/index.js",
+      "file": "ant-design-vue.js",
+      "fileHash": "ae84e954",
+      "needsInterop": false
+    },
+    "pinia": {
+      "src": "../../node_modules/.store/pinia@2.1.7/node_modules/pinia/dist/pinia.mjs",
+      "file": "pinia.js",
+      "fileHash": "7cb1a54d",
+      "needsInterop": false
+    },
+    "pinia-plugin-persistedstate": {
+      "src": "../../node_modules/.store/pinia-plugin-persistedstate@3.2.1/node_modules/pinia-plugin-persistedstate/dist/index.mjs",
+      "file": "pinia-plugin-persistedstate.js",
+      "fileHash": "0afd185f",
+      "needsInterop": false
+    },
+    "vue": {
+      "src": "../../node_modules/.store/vue@3.4.21/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "996ad1ce",
+      "needsInterop": false
+    },
+    "vue-router": {
+      "src": "../../node_modules/.store/vue-router@4.3.0/node_modules/vue-router/dist/vue-router.mjs",
+      "file": "vue-router.js",
+      "fileHash": "fcc14267",
+      "needsInterop": false
+    },
+    "axios": {
+      "src": "../../node_modules/.store/axios@1.6.7/node_modules/axios/index.js",
+      "file": "axios.js",
+      "fileHash": "465e2841",
+      "needsInterop": false
+    },
+    "mockjs": {
+      "src": "../../node_modules/.store/mockjs@1.1.0/node_modules/mockjs/dist/mock.js",
+      "file": "mockjs.js",
+      "fileHash": "31bca8de",
+      "needsInterop": true
+    },
+    "@ant-design/icons-vue": {
+      "src": "../../node_modules/.store/@ant-design+icons-vue@7.0.1/node_modules/@ant-design/icons-vue/es/index.js",
+      "file": "@ant-design_icons-vue.js",
+      "fileHash": "5462cff8",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-Q3QWTOCG": {
+      "file": "chunk-Q3QWTOCG.js"
+    },
+    "chunk-JKBPWTQY": {
+      "file": "chunk-JKBPWTQY.js"
+    },
+    "chunk-EA2VJ5L6": {
+      "file": "chunk-EA2VJ5L6.js"
+    },
+    "chunk-ZS7NZCD4": {
+      "file": "chunk-ZS7NZCD4.js"
+    }
+  }
 }
