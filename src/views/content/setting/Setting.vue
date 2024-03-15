@@ -1,7 +1,7 @@
 <template>
   <div class="settings" v-draggable>
     <div class="setting-head system-head px-8" data-drag>
-      <div>系统设置</div>
+      <div>设置中心</div>
       <div class="system-icon" @click="showSetting = false">
         <CloseOutlined />
       </div>

@@ -9,21 +9,34 @@
           </div>
         </a-tooltip>
       </template>
+      <template v-if="pageStore.$state.screenType === 0">
+        <a-tooltip title="最大化">
+          <div class="system-icon" @click="pageStore.$state.screenType = 1">
+            <FullscreenOutlined />
+          </div>
+        </a-tooltip>
+      </template>
+
+      <template v-else>
+        <a-tooltip title="收起">
+          <div class="system-icon" @click="pageStore.$state.screenType = 0">
+            <FullscreenExitOutlined />
+          </div>
+        </a-tooltip>
+      </template>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import usePageStore from '@/store/page';
 import { conversation } from '@/views/sidebar/sidebar';
-import { FullscreenOutlined, SettingOutlined } from '@ant-design/icons-vue';
+import { FullscreenExitOutlined, FullscreenOutlined, SettingOutlined } from '@ant-design/icons-vue';
 import { showSetting } from '../setting/setting';
 
+const pageStore = usePageStore();
+
 const options = [
-  {
-    icon: markRaw(FullscreenOutlined),
-    tips: '全屏',
-    action() {},
-  },
   {
     icon: markRaw(SettingOutlined),
     tips: '打开设置',

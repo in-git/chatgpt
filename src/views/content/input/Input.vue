@@ -6,7 +6,7 @@
         :disabled="loading"
         @keydown.enter="send"
         v-model="msg"
-        placeholder="AI 一下吧"
+        placeholder="按下[alt/ctrl]+enter 换行, 按 enter 发送消息"
         v-focus
         ref="textareaRef"
       ></textarea>
@@ -26,6 +26,7 @@ import { conversation } from '@/views/sidebar/sidebar';
 import Toolbar from './toolbar/Toolbar.vue';
 
 const configStore = useConfigStore();
+
 const msg = ref<string>('');
 const loading = ref(false);
 const textareaRef = ref<HTMLTextAreaElement | null>();
@@ -35,7 +36,7 @@ const send = async () => {
   if (!msg.value) {
     return;
   }
-  if (event.ctrlKey) {
+  if (event.ctrlKey || event.altKey) {
     msg.value += '\n';
     return;
   } else {

@@ -11,7 +11,7 @@
               <div class="text-999">
                 {{ item.role }}
               </div>
-              <div class="actions flex gc-4 text-999">
+              <div class="actions flex gc-2 text-999">
                 <template v-for="(v, k) in messageActions" :key="k">
                   <a-tooltip :title="v.tips">
                     <div class="system-icon" @click="v.action(item, key)">

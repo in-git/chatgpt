@@ -5,6 +5,7 @@ interface Config {
   top_p: number;
   memory: boolean;
   model: 'gpt-3.5-turbo';
+  splitSize: number;
 }
 const useConfigStore = defineStore('config', {
   state: (): Config => ({
@@ -13,6 +14,7 @@ const useConfigStore = defineStore('config', {
     temperature: 1,
     top_p: 1,
     memory: true,
+    splitSize: 40,
   }),
   persist: true,
 });

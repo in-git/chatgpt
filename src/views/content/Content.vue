@@ -1,11 +1,11 @@
 <template>
   <div class="gpt-content flex-1 flex flex-col relative">
     <HeadVue />
-    <Splitpanes class="default-theme" horizontal>
-      <pane size="80">
+    <Splitpanes class="default-theme" horizontal @resized="resize">
+      <pane :size="100 - configStore.$state.splitSize">
         <MessageVue />
       </pane>
-      <pane size="40" max-size="50" min-size="30">
+      <pane :size="configStore.$state.splitSize" max-size="90" min-size="10">
         <InputVue />
       </pane>
     </Splitpanes>
@@ -13,11 +13,18 @@
 </template>
 
 <script setup lang="ts">
+import useConfigStore from '@/store/config/config';
 import { Pane, Splitpanes } from 'splitpanes';
 import 'splitpanes/dist/splitpanes.css';
 import HeadVue from './head/Head.vue';
 import InputVue from './input/Input.vue';
 import MessageVue from './message/Message.vue';
+
+const configStore = useConfigStore();
+
+const resize = (data: any[]) => {
+  configStore.$state.splitSize = data[1].size;
+};
 </script>
 
 <style lang="scss" scoped>

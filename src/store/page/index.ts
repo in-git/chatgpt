@@ -7,7 +7,9 @@ interface PageSettings {
   virtual: boolean;
   size?: 'small' | 'middle' | 'large' | undefined;
   autoInsertSpaceInButton: boolean;
+  screenType: 0 | 1;
 }
+
 const usePageStore = defineStore('page', {
   state: (): PageSettings => ({
     theme: '#00a6fb',
@@ -17,6 +19,7 @@ const usePageStore = defineStore('page', {
     wave: true,
     virtual: true,
     autoInsertSpaceInButton: true,
+    screenType: 0,
   }),
   persist: true,
 });
