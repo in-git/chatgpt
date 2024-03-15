@@ -31,6 +31,7 @@
               v-focus
               v-input-select
               type="text"
+              @change="setTitle(item)"
               v-else
               v-model="item.title"
             />
@@ -80,7 +81,12 @@ const store = useConversationStore();
 
 const listRef = ref();
 const itemRef = ref<HTMLElement[] | null>();
-
+const setTitle = (item: Conversation) => {
+  console.log(item.title);
+  if (!item.title) {
+    item.title = `新建会话(${store.$state.list.length})`;
+  }
+};
 const selectConversation = (item: Conversation) => {
   conversation.value = item;
 };
@@ -96,7 +102,7 @@ const create = () => {
   const id = nanoid();
 
   const newItem: Conversation = {
-    title: `新建会话列表(${store.$state.list.length + 1})`,
+    title: `新建会话(${store.$state.list.length + 1})`,
     time: formatted.value,
     id,
     edit: false,

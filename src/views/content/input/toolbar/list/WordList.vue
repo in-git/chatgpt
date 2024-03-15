@@ -12,6 +12,11 @@
         </a-radio-button>
       </a-radio-group>
       <div class="flex gc-4">
+        <a-popconfirm title="是否删除这个记录" @confirm="del">
+          <a-button danger :disabled="!currentWord">
+            <DeleteOutlined />
+          </a-button>
+        </a-popconfirm>
         <a-tooltip title="编辑">
           <a-button type="primary" :disabled="!currentWord" @click="edit">
             <EditOutlined />
@@ -67,6 +72,16 @@ const edit = () => {
   if (currentWord.value) {
     defaultWordForm.value = currentWord.value;
     tabs.value = 'form';
+  }
+};
+const del = () => {
+  if (currentWord.value) {
+    conversationStore.$state.defaultWord = conversationStore.$state.defaultWord.filter(e => {
+      if (!currentWord.value) {
+        return e;
+      }
+      return e.id !== currentWord.value.id;
+    });
   }
 };
 </script>
