@@ -13,7 +13,7 @@
       </a-radio-group>
       <div class="flex gc-4">
         <a-tooltip title="添加到快捷方式">
-          <a-button :disabled="!currentWord">
+          <a-button :disabled="!currentWord" @click="createShortcut">
             <PlusOutlined />
           </a-button>
         </a-tooltip>
@@ -42,6 +42,7 @@
 import useConversationStore, { type DefaultWord } from '@/store/conversation/conversation';
 import { PlusOutlined } from '@ant-design/icons-vue';
 import { useSortable } from '@vueuse/integrations/useSortable';
+import { message } from 'ant-design-vue';
 import { classification } from '../form/data';
 
 const listRef = ref();
@@ -62,13 +63,21 @@ const list = computed(() => {
     return e.type === currentType.value;
   });
 });
+
+const createShortcut = () => {
+  if (currentWord.value) {
+    conversationStore.$state.shortcut.push({
+      ...currentWord.value,
+    });
+  }
+  message.success('成功添加');
+};
 </script>
 
 <style lang="scss" scoped>
 .world-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30%, 0.2fr));
-  gap: 8px;
   li {
     cursor: pointer;
   }

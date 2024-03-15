@@ -63,6 +63,7 @@
 
 <script setup lang="ts">
 import useConversationStore from '@/store/conversation/conversation';
+import type { Conversation } from '@/store/conversation/types';
 import {
   DragOutlined,
   EllipsisOutlined,
@@ -89,6 +90,7 @@ const selectMenu = (info: MenuInfo) => {
     info.item.action();
   }
 };
+
 const create = () => {
   const formatted = useDateFormat(useNow(), 'YYYY-MM-DD HH:mm:ss');
   const id = nanoid();
@@ -124,18 +126,28 @@ nextTick(() => {
 
 const list = computed(() => store.$state.list);
 
-watch(conversation, () => {
-  const index = store.$state.list.findIndex(e => {
-    return e.id === conversation.value.id;
-  });
-  nextTick(() => {
-    if (itemRef.value && index > -1) {
-      itemRef.value[index].scrollIntoView({
-        block: 'end',
-      });
+watch(
+  conversation,
+  () => {
+    const index = store.$state.list.findIndex(e => {
+      return e.id === conversation.value.id;
+    });
+    if (!conversation.value.id && store.$state.list.length >= 1) {
+      conversation.value = store.$state.list[0];
     }
-  });
-});
+    nextTick(() => {
+      if (itemRef.value && index > -1) {
+        itemRef.value[index].scrollIntoView({
+          block: 'end',
+        });
+      }
+    });
+  },
+  {
+    deep: true,
+    immediate: true,
+  },
+);
 </script>
 
 <style lang="scss" scoped>

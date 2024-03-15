@@ -53,6 +53,7 @@ declare module 'vue' {
     Draggable: typeof import('./components/draggable/Draggable.vue')['default']
     Icon: typeof import('./components/icon/Icon.vue')['default']
     InfoCircleFilled: typeof import('@ant-design/icons-vue')['InfoCircleFilled']
+    LoadingOutlined: typeof import('@ant-design/icons-vue')['LoadingOutlined']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TranslationOutlined: typeof import('@ant-design/icons-vue')['TranslationOutlined']

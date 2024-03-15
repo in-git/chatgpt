@@ -1,7 +1,7 @@
 <template>
   <div class="content-input flex flex-col h-100">
     <Toolbar />
-    <div class="textarea flex-1 h-100">
+    <div class="textarea flex-1 h-100 relative">
       <textarea
         :disabled="loading"
         @keydown.enter="send"
@@ -10,6 +10,7 @@
         v-focus
         ref="textareaRef"
       ></textarea>
+      <LoadingVue v-if="loading" />
     </div>
     <div class="my-4 text-right mr-12">
       <a-button type="primary" :disabled="msg.length === 0" @click="send" :loading="loading">
@@ -24,6 +25,7 @@ import { sendMsg } from '@/api/modules/ai/chatgpt';
 import type { GptMessage } from '@/api/modules/ai/types';
 import useConfigStore from '@/store/config/config';
 import { conversation } from '@/views/sidebar/sidebar';
+import LoadingVue from './Loading.vue';
 import Toolbar from './toolbar/Toolbar.vue';
 
 const configStore = useConfigStore();

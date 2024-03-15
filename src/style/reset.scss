@@ -58,10 +58,13 @@ h3,
 h4,
 h5,
 h6 {
+  list-style: none !important;
   padding: 0 !important;
   margin: 0 !important;
 }
-
+* {
+  list-style: none !important;
+}
 a {
   text-decoration: none;
   color: var(--primary);
