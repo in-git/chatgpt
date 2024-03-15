@@ -42,12 +42,15 @@ body {
 p {
   font-size: 12px !important;
 }
+
 img {
   user-select: none;
   display: inline;
 }
+
 ol,
 ul,
+pre,
 p,
 h1,
 h2,
@@ -55,9 +58,8 @@ h3,
 h4,
 h5,
 h6 {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 a {

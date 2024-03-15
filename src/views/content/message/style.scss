@@ -3,6 +3,14 @@
 	height: calc(100%);
 }
 .msg-list {
+	list-style: none !important;
+	padding: 0 !important;
+	li {
+		list-style: none !important;
+		margin: 0;
+		padding: 0;
+		height: fit-content !important;
+	}
 	.avatar {
 		$wh: 32px;
 		width: $wh;
@@ -61,21 +69,10 @@
 		background: #ddd;
 	}
 }
-.markdown-body {
-	p {
-		font-size: 12px;
-	}
-}
+
 .expand-text {
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
-}
-
-section {
-	* {
-		line-height: initial !important;
-		height: fit-content !important;
-	}
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="toolbar flex align-center justify-between px-8">
     <div class="flex gc-2">
-      <ul>
+      <ul v-if="conversationStore.$state.shortcut.length > 0">
         <li v-for="(item, key) in conversationStore.$state.shortcut" :key="key">
           {{ item.name }}
         </li>

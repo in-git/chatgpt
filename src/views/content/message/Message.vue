@@ -22,11 +22,11 @@
               </div>
             </div>
             <div class="msg">
-              <div v-if="!isSystem(item.role)">
+              <div v-if="!isSystem(item.role) || !item.content.includes('```')">
                 {{ item.content }}
               </div>
               <!-- <VMarkdownView mode="light" v-else :content="item.content"></VMarkdownView> -->
-              <div v-else v-html="item.content"></div>
+              <MdPreview previewTheme="default" v-else :modelValue="item.content" />
             </div>
           </div>
         </div>
@@ -39,6 +39,9 @@
 import logoPng from '@/assets/logo.png';
 import userPng from '@/assets/user.png';
 import { conversation } from '@/views/sidebar/sidebar';
+
+import { MdPreview } from 'md-editor-v3';
+import 'md-editor-v3/lib/style.css';
 import { messageActions } from './data';
 
 const expand = ref(false);
