@@ -25,7 +25,8 @@
               <div v-if="!isSystem(item.role)">
                 {{ item.content }}
               </div>
-              <VMarkdownView mode="light" v-else :content="item.content"></VMarkdownView>
+              <!-- <VMarkdownView mode="light" v-else :content="item.content"></VMarkdownView> -->
+              <div v-else v-html="item.content"></div>
             </div>
           </div>
         </div>
@@ -38,8 +39,6 @@
 import logoPng from '@/assets/logo.png';
 import userPng from '@/assets/user.png';
 import { conversation } from '@/views/sidebar/sidebar';
-import { VMarkdownView } from 'vue3-markdown';
-import 'vue3-markdown/dist/style.css';
 import { messageActions } from './data';
 
 const expand = ref(false);

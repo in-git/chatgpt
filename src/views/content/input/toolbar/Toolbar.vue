@@ -1,16 +1,11 @@
 <template>
   <div class="toolbar flex align-center justify-between px-8">
     <div class="flex gc-2">
-      <a-popover title="多国语言助手" trigger="click">
-        <div class="system-icon">
-          <TranslationOutlined />
-        </div>
-        <template #content>
-          <a-card>
-            <a-tag>中译英</a-tag>
-          </a-card>
-        </template>
-      </a-popover>
+      <ul>
+        <li v-for="(item, key) in conversationStore.$state.shortcut" :key="key">
+          {{ item.name }}
+        </li>
+      </ul>
       <div>
         <a-tooltip title="新增预设">
           <div class="system-icon" @click="visible = true">
@@ -56,13 +51,14 @@
 
 <script setup lang="ts">
 import useConfigStore from '@/store/config/config';
+import useConversationStore from '@/store/conversation/conversation';
 import { conversation } from '@/views/sidebar/sidebar';
 import { PlusOutlined } from '@ant-design/icons-vue';
 import DefaultWord from './DefaultWord.vue';
 
 const visible = ref(false);
 const configStore = useConfigStore();
-
+const conversationStore = useConversationStore();
 const count = ref(0);
 const clear = () => {
   conversation.value.messageList = [];

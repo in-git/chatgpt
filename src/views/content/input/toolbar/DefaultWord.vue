@@ -11,13 +11,15 @@
           <CloseOutlined />
         </div>
       </div>
-      <div class="p-8">
-        <a-segmented :options="options" v-model:value="current"></a-segmented>
-        <!--  -->
-        <section>
-          <WordList v-if="current === 'list'" />
-          <WordForm v-else />
-        </section>
+      <div class="px-8">
+        <a-tabs>
+          <a-tab-pane key="list" tab="预设列表">
+            <WordList />
+          </a-tab-pane>
+          <a-tab-pane key="form" tab="新建">
+            <WordForm />
+          </a-tab-pane>
+        </a-tabs>
       </div>
     </div>
   </Transition>
@@ -28,19 +30,6 @@ import WordForm from './form/WordForm.vue';
 import WordList from './list/WordList.vue';
 
 const emit = defineEmits(['update:visible']);
-
-const current = ref('list');
-
-const options = [
-  {
-    label: '列表',
-    value: 'list',
-  },
-  {
-    label: '创建',
-    value: 'form',
-  },
-];
 defineProps<{
   visible: boolean;
 }>();
@@ -49,18 +38,26 @@ defineProps<{
 <style lang="scss" scoped>
 .default-word {
   width: 600px;
-  height: 400px;
+  height: 450px;
   position: fixed;
   background: white;
+  overflow-y: auto;
   z-index: 10;
-  left: calc(50% - 200px);
-  top: calc(50% - 300px);
+
+  left: calc(50% - 250px);
+  top: calc(50% - 225px);
   box-shadow: var(--window-shadow);
+
   .system-head {
     border-bottom: 1px solid #ddd;
+    background: white;
   }
+
   section {
     height: calc(100% - 32px);
   }
+}
+::v-deep(.ant-card) {
+  box-shadow: none;
 }
 </style>

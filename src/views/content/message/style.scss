@@ -72,3 +72,10 @@
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 }
+
+section {
+	* {
+		line-height: initial !important;
+		height: fit-content !important;
+	}
+}
