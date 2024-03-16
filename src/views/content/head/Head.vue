@@ -32,6 +32,16 @@
           </div>
         </a-tooltip>
       </template>
+      <a-popover trigger="click" placement="bottomRight">
+        <a-tooltip title="关于">
+          <div class="system-icon">
+            <InfoCircleOutlined />
+          </div>
+        </a-tooltip>
+        <template #content>
+          <About></About>
+        </template>
+      </a-popover>
     </div>
   </div>
 </template>
@@ -40,8 +50,14 @@
 import useConfigStore from '@/store/config/config';
 import usePageStore from '@/store/page';
 import { conversation } from '@/views/sidebar/sidebar';
-import { FullscreenExitOutlined, FullscreenOutlined, SettingOutlined } from '@ant-design/icons-vue';
+import {
+  FullscreenExitOutlined,
+  FullscreenOutlined,
+  InfoCircleOutlined,
+  SettingOutlined,
+} from '@ant-design/icons-vue';
 import { showSetting } from '../setting/setting';
+import About from './About.vue';
 
 const configStore = useConfigStore();
 const pageStore = usePageStore();

@@ -1,35 +1,7 @@
 <template>
   <div class="toolbar flex align-center justify-between px-8">
-    <div class="flex gc-2 align-center">
-      <ul class="flex gc-2">
-        <template v-for="(item, key) in classification" :key="key">
-          <a-popover trigger="click" :title="type || '未分类'">
-            <a-tooltip :title="item.label" placement="bottom">
-              <li class="cursor-pointer system-icon" @click="type = item.value">
-                <component :is="item.icon"></component>
-              </li>
-            </a-tooltip>
-            <template #content>
-              <div style="width: 240px" :bordered="false" :borderStyle="{ padding: '0' }">
-                <ul class="selected-list" v-if="list.length > 0">
-                  <li v-for="(item, key) in list" :key="key" @click="selectDefaultWord(item)">
-                    <div>{{ item.name }}</div>
-                  </li>
-                </ul>
-                <a-empty v-else></a-empty>
-              </div>
-            </template>
-          </a-popover>
-        </template>
-      </ul>
-      <a-divider type="vertical"></a-divider>
-      <div>
-        <a-tooltip title="新增预设">
-          <div class="system-icon" @click="visible = true">
-            <PlusOutlined />
-          </div>
-        </a-tooltip>
-      </div>
+    <div>
+      <Keyword />
     </div>
     <!--  -->
     <div class="flex gc-4 align-center">
@@ -67,18 +39,15 @@
       </a-popover>
     </div>
   </div>
-  <DefaultWordVue v-model:visible="visible" />
 </template>
 
 <script setup lang="ts">
 import useConfigStore from '@/store/config/config';
-import useConversationStore, { type DefaultWord } from '@/store/conversation/conversation';
+import useConversationStore from '@/store/conversation/conversation';
 import { conversation } from '@/views/sidebar/sidebar';
-import { InfoCircleOutlined, PlusOutlined } from '@ant-design/icons-vue';
-import DefaultWordVue from './DefaultWord.vue';
-import { classification } from './form/data';
+import { InfoCircleOutlined } from '@ant-design/icons-vue';
+import Keyword from './Keyword.vue';
 
-const visible = ref(false);
 const configStore = useConfigStore();
 const conversationStore = useConversationStore();
 const count = ref(0);
@@ -99,20 +68,6 @@ watch(
     deep: true,
   },
 );
-const selectDefaultWord = (item: DefaultWord) => {
-  conversation.value.messageList.push({
-    role: item.role,
-    content: item.content,
-  });
-};
-const list = computed(() => {
-  return conversationStore.$state.defaultWord.filter(e => {
-    if (!type.value) {
-      return e;
-    }
-    return e.type === type.value;
-  });
-});
 </script>
 
 <style lang="scss" scoped>
