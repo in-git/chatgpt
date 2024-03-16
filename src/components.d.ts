@@ -40,6 +40,7 @@ declare module 'vue' {
     CloseOutlined: typeof import('@ant-design/icons-vue')['CloseOutlined']
     DeleteOutlined: typeof import('@ant-design/icons-vue')['DeleteOutlined']
     Draggable: typeof import('./components/draggable/Draggable.vue')['default']
+    FontSizeOutlined: typeof import('@ant-design/icons-vue')['FontSizeOutlined']
     Icon: typeof import('./components/icon/Icon.vue')['default']
     InfoCircleFilled: typeof import('@ant-design/icons-vue')['InfoCircleFilled']
     LoadingOutlined: typeof import('@ant-design/icons-vue')['LoadingOutlined']

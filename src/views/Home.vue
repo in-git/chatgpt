@@ -11,6 +11,8 @@
       </Transition>
     </div>
   </div>
+
+  <div class="phone flex flex-s">暂时不支持小屏显示</div>
 </template>
 
 <script setup lang="ts">
@@ -48,12 +50,37 @@ const style = computed((): CSSProperties => {
   height: 100vh;
   padding: 20px;
   background: url('../assets/background.webp');
+
   .core {
     // width: 1000px;
     // height: 700px;
+    transition: var(--transition);
     position: fixed;
     background: #fff;
     border-radius: var(--radius);
+  }
+}
+.phone {
+  font-size: 24px;
+  font-weight: bold;
+  height: 100vh;
+  width: 100vw;
+  color: #999;
+}
+@media screen and (max-width: 1000px) {
+  .gpt-home {
+    display: none;
+  }
+  .phone {
+    display: flex;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .phone {
+    display: none;
+  }
+  .gpt-home {
+    display: block;
   }
 }
 </style>

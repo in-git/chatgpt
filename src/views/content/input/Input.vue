@@ -26,11 +26,11 @@ import type { GptMessage } from '@/api/modules/ai/types';
 import useConfigStore from '@/store/config/config';
 import { conversation } from '@/views/sidebar/sidebar';
 import LoadingVue from './Loading.vue';
+import { msg } from './data';
 import Toolbar from './toolbar/Toolbar.vue';
 
 const configStore = useConfigStore();
 
-const msg = ref<string>('');
 const loading = ref(false);
 const textareaRef = ref<HTMLTextAreaElement | null>();
 
@@ -46,7 +46,7 @@ const send = async () => {
     event.preventDefault();
   }
   loading.value = true;
-
+  let tempMsg = undefined;
   try {
     const newMsg: GptMessage = {
       role: 'user',
@@ -55,7 +55,7 @@ const send = async () => {
     conversation.value.messageList.push({
       ...newMsg,
     });
-    let tempMsg = undefined;
+
     if (configStore.$state.memory) {
       tempMsg = conversation.value.messageList;
     } else {
@@ -82,6 +82,9 @@ const send = async () => {
     loading.value = false;
   } catch (error) {
     loading.value = false;
+    if (configStore.$state.memory) {
+      conversation.value.messageList.pop();
+    }
   }
 };
 </script>
