@@ -2,6 +2,7 @@ import useConversationStore from '@/store/conversation/conversation';
 import type { Conversation } from '@/store/conversation/types';
 import { ClearOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons-vue';
 import { Modal } from 'ant-design-vue';
+
 const conversationObj: Conversation = {
   title: '',
   time: '',
@@ -63,3 +64,17 @@ export const menus = [
     },
   },
 ];
+export const clearAll = () => {
+  Modal.confirm({
+    title: '警告',
+    centered: true,
+    content: '将会失去所有会话信息,且无法找回',
+    onOk() {
+      const store = useConversationStore();
+      conversation.value = {
+        ...conversationObj,
+      };
+      store.$state.list = [];
+    },
+  });
+};
