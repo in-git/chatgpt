@@ -275,7 +275,7 @@ export const downloadText = (text: string, filename = '', suffix = '') => {
 
 // 检测视频是否能够播放
 export function canPlayVideo(video: HTMLVideoElement): boolean {
-  const supportedFormats: string[] = ['video/mp4', 'video/webm', 'video/ogg']; // 支持的视频格式
+  const supportedFormats: string[] = ['video/mp4', 'video/webm', 'video/ogg'];
 
   for (let i = 0; i < supportedFormats.length; i++) {
     const format: string = supportedFormats[i];

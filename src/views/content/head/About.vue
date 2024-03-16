@@ -18,7 +18,7 @@
         </a>
       </a-descriptions-item>
 
-      <a-descriptions-item label="支持移动端">不支持移动端</a-descriptions-item>
+      <a-descriptions-item label="屏幕支持">大于1000px</a-descriptions-item>
     </a-descriptions>
 
     <a-descriptions title="反馈" :column="1">
