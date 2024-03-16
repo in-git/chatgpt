@@ -16,9 +16,5 @@ node_modules
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
-node_modules
-<<<<<<< HEAD
-=======
 dist
 token.ts
->>>>>>> 067f49cf5a07978c2fcacd1be4adbc99a3ec819f
