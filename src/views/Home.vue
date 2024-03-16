@@ -51,6 +51,7 @@ const style = computed((): CSSProperties => {
   .core {
     // width: 1000px;
     // height: 700px;
+    transition: var(--transition);
     position: fixed;
     background: #fff;
     border-radius: var(--radius);
