@@ -5,11 +5,18 @@
         <UnorderedListOutlined />
         会话列表({{ list.length }})
       </div>
-      <a-tooltip title="创建对话">
-        <div class="system-icon create" @click="create">
-          <PlusOutlined />
-        </div>
-      </a-tooltip>
+      <div class="flex">
+        <a-tooltip title="清空所有对话">
+          <div class="system-icon" @click="clearAll" v-if="store.$state.list.length > 1">
+            <DeleteOutlined />
+          </div>
+        </a-tooltip>
+        <a-tooltip title="创建对话">
+          <div class="system-icon create" @click="create">
+            <PlusOutlined />
+          </div>
+        </a-tooltip>
+      </div>
     </div>
     <ul class="list" ref="listRef" v-show="list.length > 0">
       <li
@@ -39,9 +46,11 @@
           </div>
         </div>
         <div class="flex gc-4">
-          <div class="system-icon handle">
-            <DragOutlined />
-          </div>
+          <a-tooltip title="拖拽调整顺序">
+            <div class="system-icon handle">
+              <DragOutlined />
+            </div>
+          </a-tooltip>
           <a-dropdown trigger="click" placement="bottomLeft">
             <div class="actions system-icon">
               <EllipsisOutlined />
@@ -75,7 +84,7 @@ import { useDateFormat, useNow } from '@vueuse/core';
 import { moveArrayElement, useSortable } from '@vueuse/integrations/useSortable';
 import type { MenuInfo } from 'ant-design-vue/es/menu/src/interface';
 import { nanoid } from 'nanoid';
-import { conversation, menus } from './sidebar';
+import { clearAll, conversation, menus } from './sidebar';
 
 const store = useConversationStore();
 
