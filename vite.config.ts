@@ -14,6 +14,7 @@ export default defineConfig(() => {
   const lifecycle = process.env.npm_lifecycle_event;
 
   return {
+    base: '/chat-gpt/',
     plugins: [
       vue(),
       AutoImport({
