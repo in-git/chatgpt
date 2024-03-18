@@ -43,14 +43,18 @@ axios.interceptors.response.use(
       });
       message.warn(res.msg || 'Permission Denied');
     }
+
     return response;
   },
   error => {
     if (error.toString().includes('Network Error')) {
       message.warn('Network Error');
     } else {
+      console.log(error.response.data);
+
       message.error(error.message);
     }
+
     return Promise.reject(error);
   },
 );

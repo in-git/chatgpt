@@ -40,7 +40,7 @@
                   查询
                 </a-button>
               </template>
-              <a-progress :percent="balance / (totalAmount / 100)">
+              <a-progress :percent="totalAmount / balance">
                 <template #format="percent">
                   <span>{{ percent.toFixed(2) }}%</span>
                 </template>
@@ -52,13 +52,14 @@
                 </div>
                 <div>
                   <span class="text-999 mr-4">已使用:</span>
-                  <span>{{ Number(totalAmount) / 100 }}</span>
+                  <span>{{ (Number(totalAmount) / 100).toFixed(2) }}</span>
                 </div>
               </div>
             </a-card>
           </div>
         </a-form-item>
         <a-divider class="my-8" />
+
         <a-form-item label="随机性[temperature]">
           <a-slider
             :min="0"
@@ -87,7 +88,6 @@
             与随机性类似
           </div>
         </a-form-item>
-        <a-divider class="my-8" />
       </a-card>
     </a-form>
   </div>
@@ -100,22 +100,22 @@ import axios from 'axios';
 
 const configStore = useConfigStore();
 const loading = ref(false);
-
 const balance = ref<number>(0);
-const totalAmount = ref<number>(1);
+const totalAmount = ref<number>(0);
 
+/* 订阅查询 */
 const subscription = async () => {
   const subscription = `https://openkey.cloud/v1/dashboard/billing/subscription`;
   // const url1 = `https://billing.openkey.cloud/api/v1/token`;
   const usage = `https://openkey.cloud/v1/dashboard/billing/usage`;
   loading.value = true;
-
+  /* 获取总量 */
   const { data: subscriptionData } = await axios.get(`${subscription}`, {
     data: {
       api_key: configStore.$state.token,
     },
   });
-
+  /* 获取已使用了的 */
   const { data: usageData } = await axios.get(`${usage}`, {
     data: {
       api_key: configStore.$state.token,
