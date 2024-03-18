@@ -12,6 +12,7 @@
       <div class="mt-8">
         <GptVue v-if="current === 'gpt'" />
         <AdvanceVue v-else-if="current === 'advance'" />
+        <Developer v-else-if="current === 'developer'" />
       </div>
     </div>
   </div>
@@ -20,6 +21,7 @@
 <script setup lang="ts">
 import type { SegmentedOption } from 'ant-design-vue/es/segmented/src/segmented';
 import AdvanceVue from './advance/Advance.vue';
+import Developer from './developer/Developer.vue';
 import GptVue from './gpt/Gpt.vue';
 import { showSetting } from './setting';
 
@@ -33,6 +35,11 @@ const data: SegmentedOption[] = [
     label: '高级设置',
     title: '高级设置',
     value: 'advance',
+  },
+  {
+    label: '开发者中心',
+    title: '开发者中心',
+    value: 'developer',
   },
 ];
 

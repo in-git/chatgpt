@@ -6,7 +6,7 @@
           <ul class="text-orange">
             <li>清空所有与GPT相关的设置</li>
             <li>账号相关信息将会被清空</li>
-            <li>需要重新填写TOKENS</li>
+            <li>需要重新填写 秘钥[令牌][key]</li>
           </ul>
           <a-divider class="my-8" />
           <a-button danger block type="primary" @click="resetConfig('config')">坚决执行</a-button>
