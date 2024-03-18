@@ -16,9 +16,11 @@
 
 #### 使用对话功能
 
-在 <a href='https://faucet.openkey.cloud/'>水龙头</a>这个页面获取KEY，填入设置中心的 `KEY` 中即可使用了
+先 <a href='https://faucet.openkey.cloud/'>获取KEY</a>，点击设置按钮，填入`KEY`中即可
 
-每天有免费的额度，对个人来说已经完全够用了。非特殊场景，可以关闭记忆功能，减少tokens消耗
+每天有免费的额度，对个人来说已经完全够用了。
+
+非特殊场景，可以关闭记忆功能，减少tokens消耗
 
 <img src='./assets/key.webp' width='420' />
 
@@ -26,7 +28,7 @@
 
 #### 在线体验
 
-
+<a href='https://gitee.com/in-git/chat-gpt.git'>立即前往</a>
 
 #### 预览
 
