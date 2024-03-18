@@ -46,11 +46,9 @@
           </div>
         </div>
         <div class="flex gc-4">
-          <a-tooltip title="拖拽调整顺序">
-            <div class="system-icon handle">
-              <DragOutlined />
-            </div>
-          </a-tooltip>
+          <div class="system-icon handle">
+            <DragOutlined />
+          </div>
           <a-dropdown trigger="click" placement="bottomLeft">
             <div class="actions system-icon">
               <EllipsisOutlined />
