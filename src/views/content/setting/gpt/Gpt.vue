@@ -7,21 +7,22 @@
       layout="vertical"
     >
       <a-card title="GPT设置">
-        <a-form-item label="Key">
-          <a-input v-model:value="configStore.$state.token" allow-clear></a-input>
+        <a-form-item :wrapper-col="{ span: 12, offset: 6 }">
+          <template #label>
+            <span class="text-primary">秘钥[令牌][Key][Token]</span>
+          </template>
+          <a-textarea
+            :autoSize="{ row: 4 }"
+            v-model:value="configStore.$state.token"
+            allow-clear
+          ></a-textarea>
           <div class="text-999">
             <InfoCircleFilled />
             相当于一个账号,
             <a-button type="link" href="https://faucet.openkey.cloud/" target="_blank">
-              免费体验
+              推荐获取
             </a-button>
-            每天有一定额度
           </div>
-        </a-form-item>
-
-        <a-divider class="my-8" />
-        <a-form-item label="模型">
-          <a-select v-model:value="configStore.$state.model" :options="modelList"></a-select>
         </a-form-item>
 
         <a-divider class="my-8" />
@@ -61,7 +62,6 @@
 <script setup lang="ts">
 import useConfigStore from '@/store/config/config';
 import { InfoCircleFilled } from '@ant-design/icons-vue';
-import { modelList } from './data';
 
 const configStore = useConfigStore();
 </script>
@@ -73,5 +73,8 @@ const configStore = useConfigStore();
 .text-orange {
   color: orange;
   zoom: 0.9;
+}
+.text-primary {
+  color: var(--primary);
 }
 </style>

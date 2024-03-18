@@ -1,8 +1,14 @@
 <template>
   <div class="content-head flex justify-between align-center">
-    <div class="flex gc-4">
+    <div class="flex gc-4 align-center">
+      <a-select
+        v-model:value="configStore.$state.model"
+        style="width: 160px"
+        :options="modelList"
+      ></a-select>
+      <a-divider type="vertical"></a-divider>
       <a-breadcrumb>
-        <a-breadcrumb-item>{{ configStore.$state.model }}</a-breadcrumb-item>
+        <a-breadcrumb-item>会话列表</a-breadcrumb-item>
         <a-breadcrumb-item>
           {{ conversation.title || 'empty' }}
         </a-breadcrumb-item>
@@ -56,6 +62,7 @@ import {
   InfoCircleOutlined,
   SettingOutlined,
 } from '@ant-design/icons-vue';
+import { modelList } from '../setting/gpt/data';
 import { showSetting } from '../setting/setting';
 import About from './About.vue';
 
