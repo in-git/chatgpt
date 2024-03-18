@@ -10,7 +10,7 @@
     :virtual="store.$state.virtual"
     :autoInsertSpaceInButton="store.$state.autoInsertSpaceInButton"
   >
-    <router-view />
+    <HomeVue />
   </ConfigProvider>
 </template>
 
@@ -19,6 +19,7 @@ import { ConfigProvider } from 'ant-design-vue';
 import type { ThemeConfig } from 'ant-design-vue/es/config-provider/context';
 import zhCN from 'ant-design-vue/es/locale/zh_CN';
 import usePageStore from './store/page';
+import HomeVue from './views/Home.vue';
 
 const locale = ref(zhCN);
 const store = usePageStore();
