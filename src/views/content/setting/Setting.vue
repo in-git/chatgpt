@@ -7,7 +7,7 @@
       </div>
     </div>
 
-    <div class="p-8">
+    <div class="p-8 components">
       <a-segmented v-model:value="current" :options="data"></a-segmented>
       <div class="mt-8">
         <GptVue v-if="current === 'gpt'" />
@@ -64,6 +64,10 @@ const current = ref<'gpt' | 'advance'>('gpt');
     &:hover {
       background: #eee;
     }
+  }
+  .components {
+    height: calc(100% - 42px);
+    overflow-y: auto;
   }
 }
 </style>

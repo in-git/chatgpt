@@ -1,6 +1,8 @@
+import usePageStore from '@/store/page';
 import axios from 'axios';
 import type { GptParams, GptResult } from './types';
 
 export const sendMsg = async (data: GptParams) => {
-  return await axios.post<GptResult>(`https://openkey.cloud/v1/chat/completions`, data);
+  const page = usePageStore();
+  return await axios.post<GptResult>(`${page.$state.baseUrl}`, data);
 };

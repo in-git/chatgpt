@@ -8,6 +8,7 @@ interface PageSettings {
   size?: 'small' | 'middle' | 'large' | undefined;
   autoInsertSpaceInButton: boolean;
   screenType: 0 | 1;
+  baseUrl: string;
 }
 
 const usePageStore = defineStore('page', {
@@ -20,6 +21,7 @@ const usePageStore = defineStore('page', {
     virtual: true,
     autoInsertSpaceInButton: true,
     screenType: 0,
+    baseUrl: `https://openkey.cloud/v1/chat/completions`,
   }),
   persist: true,
 });
