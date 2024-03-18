@@ -1,6 +1,6 @@
 <template>
   <div class="advance">
-    <div class="flex flex-col gr-4 pt-12">
+    <div class="flex flex-col gr-4">
       <div class="grid gc-8">
         <a-card title="重设GPT">
           <ul class="text-orange">
