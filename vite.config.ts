@@ -70,6 +70,9 @@ export default defineConfig(() => {
     optimizeDeps: {
       include: ['@ant-design/icons-vue', 'ant-design-vue', '@vueuse/core'],
     },
+    build: {
+      sourcemap: false,
+    },
     server: {
       proxy: {
         '/api': {
