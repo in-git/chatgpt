@@ -47,11 +47,7 @@ axios.interceptors.response.use(
     if (error.toString().includes('Network Error')) {
       message.warn('Network Error');
     } else {
-<<<<<<< HEAD
-      message.error(error.response.data.error.message || 'Error');
-=======
       message.error(error.message);
->>>>>>> develop
     }
     return Promise.reject(error);
   },
