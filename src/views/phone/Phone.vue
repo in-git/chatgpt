@@ -1,22 +1,14 @@
 <template>
   <div class="phone flex flex-col">
-    <div class="phone-content">
-      <Session v-if="showContent" />
-      <Chat v-else />
-    </div>
+    <Session v-if="mode === 'session'" />
+    <Chat v-else-if="mode === 'chat'" />
   </div>
 </template>
 
 <script setup lang="ts">
 import Chat from './chat/Chat.vue';
-import { showContent } from './data';
-
+import { mode } from './data';
 import Session from './session/Session.vue';
 </script>
 
-<style lang="scss" scoped>
-.phone-content {
-  height: calc(100% - 48px);
-  overflow-y: auto;
-}
-</style>
+<style lang="scss" scoped></style>

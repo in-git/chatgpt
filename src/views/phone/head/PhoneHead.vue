@@ -1,34 +1,39 @@
 <template>
-  <div class="phone-head system-head">
-    <div class="flex align-center gc-4">
-      <img :src="logoPng" width="24" class="logo" />
-      CHATGPT
-    </div>
-    <div class="flex gc-4 text-16">
-      <div class="system-icon" @click="createSession">
-        <PlusOutlined />
+  <div>
+    <div class="system-head">
+      <div>
+        <span class="text-999 mr-4">模型</span>
+        <a-select
+          v-model:value="configStore.$state.model"
+          style="width: 140px"
+          :options="modelList"
+        ></a-select>
       </div>
-      <div class="system-icon" @click="clearAll">
-        <ClearOutlined />
+      <div class="system-icon" @click="displaySetup = true">
+        <SettingOutlined />
       </div>
     </div>
+    <a-modal v-model:visible="displaySetup" title="设置">
+      <Gpt />
+    </a-modal>
   </div>
 </template>
 
 <script setup lang="ts">
-import logoPng from '@/assets/logo.png';
-import { clearAll, createSession } from '@/views/sidebar/sidebar';
-import { ClearOutlined, PlusOutlined } from '@ant-design/icons-vue';
+import useConfigStore from '@/store/config/config';
+import { modelList } from '@/views/content/setting/gpt/data';
+import Gpt from '@/views/content/setting/gpt/Gpt.vue';
+import { SettingOutlined } from '@ant-design/icons-vue';
+import { displaySetup } from './data';
+const configStore = useConfigStore();
 </script>
 
 <style lang="scss" scoped>
-.phone-head {
-  background-color: #f1f1f1;
-  $hh: 48px;
+$hh: 42px;
+.system-head {
+  background-color: #f5f2f3;
   line-height: $hh;
   height: $hh;
-  .logo {
-    border-radius: 4px;
-  }
+  border-bottom: 1px solid #ddd;
 }
 </style>

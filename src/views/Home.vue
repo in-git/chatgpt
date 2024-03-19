@@ -1,7 +1,10 @@
 <template>
   <div class="gpt-home">
     <div class="core flex relative" :style="style">
-      <SidebarVue />
+      <div>
+        <SidebarHead />
+        <SidebarVue />
+      </div>
       <Content />
       <Transition
         enter-active-class="animate__animated animate__zoomIn"
@@ -25,6 +28,7 @@ import SettingVue from './content/setting/Setting.vue';
 import { showSetting } from './content/setting/setting';
 import Phone from './phone/Phone.vue';
 import SidebarVue from './sidebar/Sidebar.vue';
+import SidebarHead from './sidebar/SidebarHead.vue';
 
 const pageStore = usePageStore();
 const screenOptions = [

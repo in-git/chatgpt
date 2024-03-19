@@ -1,23 +1,5 @@
 <template>
   <div class="gpt-sidebar">
-    <div class="head px-8">
-      <div class="text-666">
-        <UnorderedListOutlined />
-        会话列表({{ list.length }})
-      </div>
-      <div class="flex">
-        <a-tooltip title="清空所有对话">
-          <div class="system-icon" @click="clearAll" v-if="store.$state.list.length > 1">
-            <DeleteOutlined />
-          </div>
-        </a-tooltip>
-        <a-tooltip title="创建对话">
-          <div class="system-icon create" @click="createSession">
-            <PlusOutlined />
-          </div>
-        </a-tooltip>
-      </div>
-    </div>
     <ul class="list" ref="listRef" v-show="list.length > 0">
       <li
         class="flex align-center p-8 justify-between"
@@ -52,7 +34,7 @@
             </div>
           </a-tooltip>
           <a-dropdown trigger="click" placement="bottomLeft">
-            <div class="actions system-icon">
+            <div class="actions system-icon" @click.stop>
               <EllipsisOutlined />
             </div>
             <template #overlay>
@@ -74,16 +56,11 @@
 <script setup lang="ts">
 import useConversationStore from '@/store/conversation/conversation';
 import type { Conversation } from '@/store/conversation/types';
-import {
-  DragOutlined,
-  EllipsisOutlined,
-  PlusOutlined,
-  UnorderedListOutlined,
-} from '@ant-design/icons-vue';
+import { DragOutlined, EllipsisOutlined } from '@ant-design/icons-vue';
 import { moveArrayElement, useSortable } from '@vueuse/integrations/useSortable';
 import type { MenuInfo } from 'ant-design-vue/es/menu/src/interface';
-import { showContent } from '../phone/data';
-import { clearAll, conversation, createSession, menus } from './sidebar';
+import { mode } from '../phone/data';
+import { conversation, menus } from './sidebar';
 
 const store = useConversationStore();
 
@@ -96,7 +73,7 @@ const setTitle = (item: Conversation) => {
 };
 const selectConversation = (item: Conversation) => {
   conversation.value = item;
-  showContent.value = !showContent.value;
+  mode.value = 'chat';
 };
 
 const selectMenu = (info: MenuInfo) => {

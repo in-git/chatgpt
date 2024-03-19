@@ -1,35 +1,52 @@
 <template>
+  <div class="phone-head system-head">
+    <div class="flex align-center gc-4">
+      <img :src="logoPng" width="24" class="logo" />
+      CHATGPT
+    </div>
+    <div class="flex gc-4 text-16">
+      <div class="system-icon" @click="createSession" v-for="(item, key) in functions" :key="key">
+        <component :is="item.icon"></component>
+      </div>
+    </div>
+  </div>
   <div class="session flex-1">
-    <!-- <ul class="flex gr-8 flex-col">
-      <li v-for="item in 40" :key="item" class="flex justify-between">
-        <div class="flex gc-12">
-          <div class="index flex flex-s">{{ item }}</div>
-          <div class="flex flex-col justify-between">
-            <div class="text-14">NAME</div>
-            <div class="text-999">预览消息</div>
-          </div>
-        </div>
-        <div class="flex flex-col justify-between">
-          <div class="text-right text-14">
-            <EllipsisOutlined />
-          </div>
-          <div class="text-999">2024年3月19日</div>
-        </div>
-      </li>
-    </ul> -->
-    <PhoneHead />
     <Sidebar />
   </div>
 </template>
 
 <script setup lang="ts">
+import logoPng from '@/assets/logo.png';
+import { clearAll, createSession } from '@/views/sidebar/sidebar';
 import Sidebar from '@/views/sidebar/Sidebar.vue';
-import PhoneHead from './head/PhoneHead.vue';
+import { ClearOutlined, PlusOutlined, SettingOutlined } from '@ant-design/icons-vue';
+import { displaySetup } from '../head/data';
+
+const functions = [
+  {
+    icon: markRaw(PlusOutlined),
+    action() {
+      createSession();
+    },
+  },
+  {
+    icon: markRaw(ClearOutlined),
+    action() {
+      clearAll();
+    },
+  },
+  {
+    icon: markRaw(SettingOutlined),
+    action() {
+      displaySetup.value = true;
+    },
+  },
+];
 </script>
 
 <style lang="scss" scoped>
 .session {
-  height: calc(100% - 48px);
+  height: calc(100%);
   overflow-y: auto;
   li {
     padding: 4px 0;
@@ -39,7 +56,19 @@ import PhoneHead from './head/PhoneHead.vue';
     width: $wh;
     height: $wh;
     border-radius: var(--radius);
-    background-color: #ebe7e7;
+    background-color: #f5f2f3;
+  }
+}
+.phone-head {
+  background-color: #f1f1f1;
+  $hh: 48px;
+  line-height: $hh;
+  height: $hh;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  .logo {
+    border-radius: 4px;
   }
 }
 .gpt-sidebar {
