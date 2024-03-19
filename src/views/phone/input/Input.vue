@@ -9,7 +9,7 @@
         <a-switch v-model:checked="configStore.$state.memory"></a-switch>
       </div>
       <div>
-        <div class="system-icon text-red">
+        <div class="system-icon text-red" @click="clearDialogue">
           <DeleteOutlined />
         </div>
       </div>
@@ -24,7 +24,18 @@
 <script setup lang="ts">
 import useConfigStore from '@/store/config/config';
 import { dataLoading, msg, send } from '@/views/content/input/data';
+import { conversation } from '@/views/sidebar/sidebar';
+import { Modal } from 'ant-design-vue';
 
+const clearDialogue = () => {
+  Modal.confirm({
+    title: '将会清空当前对话',
+    onOk() {
+      conversation.value.messageList = [];
+    },
+    centered: true,
+  });
+};
 const textRef = ref<HTMLElement>();
 const configStore = useConfigStore();
 const sendMsg = () => {

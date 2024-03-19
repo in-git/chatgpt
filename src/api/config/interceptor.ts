@@ -51,11 +51,8 @@ axios.interceptors.response.use(
     if (error.toString().includes('Network Error')) {
       message.warn('Network Error');
     } else {
-      console.log(error.response.data);
-
       message.error(error.message);
     }
-
     return Promise.reject(error);
   },
 );

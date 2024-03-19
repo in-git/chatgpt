@@ -43,16 +43,13 @@
 
 <script setup lang="ts">
 import useConfigStore from '@/store/config/config';
-import useConversationStore from '@/store/conversation/conversation';
 import { conversation } from '@/views/sidebar/sidebar';
 import { InfoCircleOutlined } from '@ant-design/icons-vue';
 import Keyword from './Keyword.vue';
 
 const configStore = useConfigStore();
-const conversationStore = useConversationStore();
 const count = ref(0);
 
-const type = ref('');
 const clear = () => {
   conversation.value.messageList = [];
 };

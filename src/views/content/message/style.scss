@@ -23,11 +23,11 @@
 	.msg {
 		background: white;
 		padding: 6px 8px;
-		margin-top: 4px;
 		white-space: pre-wrap;
 		border-radius: var(--radius);
 		color: #333;
 		width: fit-content;
+		border: 1px solid #ededed;
 		height: fit-content;
 	}
 	.user {
@@ -44,9 +44,7 @@
 		.msg {
 			background: var(--primary);
 			color: white;
-			max-width: 60%;
 			div {
-				white-space: pre-wrap;
 				overflow: hidden;
 			}
 		}

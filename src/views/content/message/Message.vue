@@ -14,7 +14,11 @@
               <div class="actions flex gc-2 text-999">
                 <template v-for="(v, k) in messageActions" :key="k">
                   <a-tooltip :title="v.tips">
-                    <div class="system-icon" @click="v.action(item, key)">
+                    <div
+                      class="system-icon"
+                      v-show="v.show && v.show(item)"
+                      @click="v.action(item, key)"
+                    >
                       <component :is="v.icon"></component>
                     </div>
                   </a-tooltip>
@@ -25,7 +29,6 @@
               <div v-if="!isSystem(item.role) || !item.content.includes('```')">
                 {{ item.content }}
               </div>
-              <!-- <VMarkdownView mode="light" v-else :content="item.content"></VMarkdownView> -->
               <MdPreview previewTheme="default" v-else :modelValue="item.content" />
             </div>
           </div>

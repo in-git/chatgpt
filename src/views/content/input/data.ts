@@ -5,7 +5,7 @@ import { conversation } from '@/views/sidebar/sidebar';
 
 export const msg = ref<string>('');
 export const dataLoading = ref();
-export const send = async (inputEl: Ref<HTMLElement | undefined>) => {
+export const send = async (inputEl?: Ref<HTMLElement | undefined>) => {
   const configStore = useConfigStore();
   const event = window.event as MouseEvent;
   if (!msg.value) {
@@ -51,6 +51,7 @@ export const send = async (inputEl: Ref<HTMLElement | undefined>) => {
     });
 
     nextTick(() => {
+      if (!inputEl) return;
       inputEl.value?.focus();
     });
     dataLoading.value = false;
