@@ -1,7 +1,9 @@
 import useConversationStore from '@/store/conversation/conversation';
 import type { Conversation } from '@/store/conversation/types';
 import { ClearOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons-vue';
+import { useDateFormat, useNow } from '@vueuse/core';
 import { Modal } from 'ant-design-vue';
+import { nanoid } from 'nanoid';
 
 const conversationObj: Conversation = {
   title: '',
@@ -13,6 +15,24 @@ const conversationObj: Conversation = {
 export const conversation = ref<Conversation>({
   ...conversationObj,
 });
+
+export const createSession = () => {
+  const store = useConversationStore();
+  const formatted = useDateFormat(useNow(), 'YYYY-MM-DD HH:mm:ss');
+  const id = nanoid();
+
+  const newItem: Conversation = {
+    title: `新建会话(${store.$state.list.length + 1})`,
+    time: formatted.value,
+    id,
+    edit: false,
+    messageList: [],
+  };
+  store.$state.list.push({
+    ...newItem,
+  });
+  conversation.value = newItem;
+};
 
 export const menus = [
   {

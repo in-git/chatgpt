@@ -12,7 +12,7 @@
           </div>
         </a-tooltip>
         <a-tooltip title="创建对话">
-          <div class="system-icon create" @click="create">
+          <div class="system-icon create" @click="createSession">
             <PlusOutlined />
           </div>
         </a-tooltip>
@@ -80,11 +80,10 @@ import {
   PlusOutlined,
   UnorderedListOutlined,
 } from '@ant-design/icons-vue';
-import { useDateFormat, useNow } from '@vueuse/core';
 import { moveArrayElement, useSortable } from '@vueuse/integrations/useSortable';
 import type { MenuInfo } from 'ant-design-vue/es/menu/src/interface';
-import { nanoid } from 'nanoid';
-import { clearAll, conversation, menus } from './sidebar';
+import { showContent } from '../phone/data';
+import { clearAll, conversation, createSession, menus } from './sidebar';
 
 const store = useConversationStore();
 
@@ -97,29 +96,13 @@ const setTitle = (item: Conversation) => {
 };
 const selectConversation = (item: Conversation) => {
   conversation.value = item;
+  showContent.value = !showContent.value;
 };
 
 const selectMenu = (info: MenuInfo) => {
   if (info.item.action) {
     info.item.action();
   }
-};
-
-const create = () => {
-  const formatted = useDateFormat(useNow(), 'YYYY-MM-DD HH:mm:ss');
-  const id = nanoid();
-
-  const newItem: Conversation = {
-    title: `新建会话(${store.$state.list.length + 1})`,
-    time: formatted.value,
-    id,
-    edit: false,
-    messageList: [],
-  };
-  store.$state.list.push({
-    ...newItem,
-  });
-  conversation.value = newItem;
 };
 
 nextTick(() => {
