@@ -6,7 +6,7 @@ import { createPinia } from 'pinia';
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 import { createApp } from 'vue';
 import App from './App.vue';
-import './api/config/interceptor';
+// import './api/config/interceptor';
 import directive from './directive';
 import './mock/mock';
 // import router from './router';

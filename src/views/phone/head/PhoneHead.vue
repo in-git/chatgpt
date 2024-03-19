@@ -16,7 +16,7 @@
         <span class="text-999 mr-4">模型</span>
         <a-select
           v-model:value="configStore.$state.model"
-          style="width: 140px"
+          style="width: 120px"
           :options="modelList"
         ></a-select>
       </div>

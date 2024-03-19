@@ -1,6 +1,6 @@
 <template>
   <div style="width: 240px">
-    <a-tabs>
+    <a-tabs @tab-click="tabClick">
       <a-tab-pane key="about" tab="关于">
         <a-descriptions :column="1">
           <a-descriptions-item label="版本">初代</a-descriptions-item>
@@ -34,11 +34,42 @@
           </a-descriptions-item>
         </a-descriptions>
       </a-tab-pane>
+      <a-tab-pane tab="感谢Star" key="star">
+        <a-card :loading="loading">
+          <ul class="star-users">
+            <li v-for="item in starUsers" :key="item.id" @click="openLink(item.html_url)">
+              <a-image :src="item.avatar_url" width="32px" height="32px" :preview="false"></a-image>
+              <div>
+                {{ item.name }}
+              </div>
+            </li>
+          </ul>
+        </a-card>
+      </a-tab-pane>
     </a-tabs>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { getStarUsers } from '@/api/modules/gitee/gitee';
+import { openLink } from '@/utils/common/utils';
+import type { Key } from 'ant-design-vue/es/_util/type';
+
+const starUsers = ref<StarUser[]>();
+
+const loading = ref(false);
+const getStartUserList = async () => {
+  loading.value = true;
+  const { data } = await getStarUsers();
+  loading.value = false;
+  starUsers.value = data;
+};
+const tabClick = (key: Key) => {
+  if (key === 'star') {
+    getStartUserList();
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 .logo {
@@ -52,5 +83,9 @@
 }
 .text-primary {
   color: var(--primary);
+}
+.star-users {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(32px, 0.2fr));
 }
 </style>

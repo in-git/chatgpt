@@ -95,9 +95,9 @@
 </template>
 
 <script setup lang="ts">
+import { getBalance } from '@/api/modules/ai/chatgpt';
 import useConfigStore from '@/store/config/config';
 import { InfoCircleFilled } from '@ant-design/icons-vue';
-import axios from 'axios';
 
 const configStore = useConfigStore();
 const loading = ref(false);
@@ -106,28 +106,11 @@ const totalAmount = ref<number>(0);
 
 /* 订阅查询 */
 const subscription = async () => {
-  const subscription = `https://openkey.cloud/v1/dashboard/billing/subscription`;
-  // const url1 = `https://billing.openkey.cloud/api/v1/token`;
-  const usage = `https://openkey.cloud/v1/dashboard/billing/usage`;
   loading.value = true;
-  /* 获取总量 */
-  const { data: subscriptionData } = await axios.get(`${subscription}`, {
-    data: {
-      api_key: configStore.$state.token,
-    },
-  });
-  /* 获取已使用了的 */
-  const { data: usageData } = await axios.get(`${usage}`, {
-    data: {
-      api_key: configStore.$state.token,
-    },
-  });
+  const { total, balanceData } = await getBalance();
   loading.value = false;
-
-  totalAmount.value = usageData.total_usage;
-
-  balance.value = subscriptionData.hard_limit_usd;
-  console.log(usageData, subscriptionData);
+  totalAmount.value = total;
+  balance.value = balanceData;
 };
 </script>
 
