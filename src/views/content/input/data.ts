@@ -42,12 +42,14 @@ export const send = async (inputEl: Ref<HTMLElement | undefined>) => {
       top_p: 0.7,
     });
     msg.value = '';
+
     data.choices.forEach(e => {
       conversation.value.messageList.push({
         role: e.message.role,
         content: e.message.content,
       });
     });
+
     nextTick(() => {
       inputEl.value?.focus();
     });

@@ -20,6 +20,7 @@ axios.interceptors.request.use(
     const configStore = useConfigStore();
     if (config.headers) {
       config.headers.Authorization = `Bearer ${configStore.$state.token}`;
+      config.headers['Content-Type'] = 'application/json';
     }
 
     return config;

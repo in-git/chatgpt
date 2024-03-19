@@ -2,8 +2,11 @@
   <div class="phone-input">
     <div class="toolbar px-8 flex align-center justify-between">
       <div class="flex align-center text-999 gc-4">
-        记忆
-        <a-switch></a-switch>
+        <a-tooltip title="携带历史记录">
+          <InfoCircleFilled />
+          记忆
+        </a-tooltip>
+        <a-switch v-model:checked="configStore.$state.memory"></a-switch>
       </div>
       <div>
         <div class="system-icon text-red">
@@ -19,9 +22,11 @@
 </template>
 
 <script setup lang="ts">
+import useConfigStore from '@/store/config/config';
 import { dataLoading, msg, send } from '@/views/content/input/data';
 
 const textRef = ref<HTMLElement>();
+const configStore = useConfigStore();
 const sendMsg = () => {
   nextTick(() => {
     send(textRef);

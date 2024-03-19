@@ -5,7 +5,7 @@
       CHATGPT
     </div>
     <div class="flex gc-4 text-16">
-      <div class="system-icon" @click="createSession" v-for="(item, key) in functions" :key="key">
+      <div class="system-icon" @click="item.action" v-for="(item, key) in functions" :key="key">
         <component :is="item.icon"></component>
       </div>
     </div>
