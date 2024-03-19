@@ -2,12 +2,13 @@
   <div>
     <a-form
       :model="configStore.$state"
-      :wrapper-col="{ span: 8, offset: 10 }"
-      :label-col="{ span: 6 }"
+      :wrapper-col="{ span: 10 }"
+      :label-col="{ span: 14 }"
       layout="vertical"
+      labelAlign="left"
     >
       <a-card title="GPT设置">
-        <a-form-item :wrapper-col="{ span: 12, offset: 6 }">
+        <a-form-item>
           <template #label>
             <span class="text-primary">秘钥[令牌][Key][Token]</span>
           </template>
@@ -25,7 +26,7 @@
           </div>
         </a-form-item>
         <a-divider class="my-8" />
-        <a-form-item label="查询余额" :wrapper-col="{ span: 12, offset: 6 }">
+        <a-form-item label="查询余额">
           <div>
             <a-card :loading="loading">
               <template #title>余额</template>

@@ -1,7 +1,10 @@
 <template>
   <div class="gpt-home">
     <div class="core flex relative" :style="style">
-      <SidebarVue />
+      <div>
+        <SidebarHead />
+        <SidebarVue />
+      </div>
       <Content />
       <Transition
         enter-active-class="animate__animated animate__zoomIn"
@@ -12,7 +15,9 @@
     </div>
   </div>
 
-  <div class="phone flex flex-s">暂时不支持小屏显示</div>
+  <div>
+    <Phone />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -21,7 +26,9 @@ import type { CSSProperties } from 'vue';
 import Content from './content/Content.vue';
 import SettingVue from './content/setting/Setting.vue';
 import { showSetting } from './content/setting/setting';
+import Phone from './phone/Phone.vue';
 import SidebarVue from './sidebar/Sidebar.vue';
+import SidebarHead from './sidebar/SidebarHead.vue';
 
 const pageStore = usePageStore();
 const screenOptions = [
@@ -61,18 +68,15 @@ const style = computed((): CSSProperties => {
   }
 }
 .phone {
-  font-size: 24px;
-  font-weight: bold;
   height: 100vh;
   width: 100vw;
-  color: #999;
 }
 @media screen and (max-width: 1000px) {
   .gpt-home {
     display: none;
   }
   .phone {
-    display: flex;
+    display: block;
   }
 }
 @media screen and (min-width: 1000px) {

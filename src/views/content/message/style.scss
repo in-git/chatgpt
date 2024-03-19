@@ -44,6 +44,11 @@
 		.msg {
 			background: var(--primary);
 			color: white;
+			max-width: 60%;
+			div {
+				white-space: pre-wrap;
+				overflow: hidden;
+			}
 		}
 		.msg-head {
 			flex-direction: row-reverse;
@@ -56,7 +61,7 @@
 	}
 }
 .msg-item {
-	max-width: 80%;
+	max-width: 60%;
 	position: relative;
 }
 .actions {

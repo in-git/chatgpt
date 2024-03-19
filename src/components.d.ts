@@ -21,6 +21,7 @@ declare module 'vue' {
     AFormItem: typeof import('ant-design-vue/es')['FormItem']
     AInput: typeof import('ant-design-vue/es')['Input']
     AMenu: typeof import('ant-design-vue/es')['Menu']
+    AModal: typeof import('ant-design-vue/es')['Modal']
     APopconfirm: typeof import('ant-design-vue/es')['Popconfirm']
     APopover: typeof import('ant-design-vue/es')['Popover']
     AProgress: typeof import('ant-design-vue/es')['Progress']
@@ -38,10 +39,13 @@ declare module 'vue' {
     CloseOutlined: typeof import('@ant-design/icons-vue')['CloseOutlined']
     DeleteOutlined: typeof import('@ant-design/icons-vue')['DeleteOutlined']
     Draggable: typeof import('./components/draggable/Draggable.vue')['default']
+    EllipsisOutlined: typeof import('@ant-design/icons-vue')['EllipsisOutlined']
     Icon: typeof import('./components/icon/Icon.vue')['default']
     InfoCircleFilled: typeof import('@ant-design/icons-vue')['InfoCircleFilled']
     LoadingOutlined: typeof import('@ant-design/icons-vue')['LoadingOutlined']
+    PlusOutlined: typeof import('@ant-design/icons-vue')['PlusOutlined']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    UnorderedListOutlined: typeof import('@ant-design/icons-vue')['UnorderedListOutlined']
   }
 }

@@ -15,7 +15,7 @@ export const messageActions = [
 
   {
     tips: '删除',
-    action(item: GptMessage, index: number) {
+    action(_: GptMessage, index: number) {
       conversation.value.messageList = conversation.value.messageList.filter(
         (_: any, i: number) => {
           return i !== index;

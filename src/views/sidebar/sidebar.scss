@@ -1,14 +1,7 @@
 .gpt-sidebar {
 	width: 250px;
 	border-right: 1px solid #ddd;
-	.head {
-		line-height: 32px;
-		height: 32px;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		border-bottom: 1px solid #ddd;
-	}
+
 	li {
 		cursor: pointer;
 		color: #333;
